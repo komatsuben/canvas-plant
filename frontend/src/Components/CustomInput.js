@@ -19,6 +19,7 @@ export default function CustomInput(props) {
             maxRows={props.rows}
             helperText={props.helperText}
             fullWidth={props.fullWidth}
+            color={props.color}
         />
     );
 }

@@ -13,6 +13,7 @@ export default class App extends Component {
     render() {
         return (
             <Router>
+                <Navbar />
                 <Routes>
                     <Route exact path="/" Component={Home}/>
                 </Routes>
@@ -26,7 +27,6 @@ const root = createRoot(rootElement);
 
 root.render(
     <StrictMode>
-        <Navbar />
         <App />
     </StrictMode>
 );

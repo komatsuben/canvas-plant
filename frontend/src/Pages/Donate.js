@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import CustomInputNumber from "./CustomInputNumber";
-import ColorPalette from "./ColorPalette";
+import CustomInputNumber from "../Components/CustomInputNumber";
 
 export default function Donate() {
     const addThousandSeparator = (value) => {
@@ -20,7 +19,7 @@ export default function Donate() {
     return (
         <form>
             <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                <Stack gap={5} className="form" maxWidth={'350px'} bgcolor={'#d7d9d8'}>
+                <Stack gap={5} className="form" maxWidth={'350px'} bgcolor={"white.main"}>
                     <Stack direction={"column"} gap={2} className="row center" flexWrap={"wrap"}>
                         <Stack className="col">
                             <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #REFORESTATION</Typography>

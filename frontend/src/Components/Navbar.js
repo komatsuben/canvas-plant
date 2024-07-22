@@ -15,9 +15,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Icon } from '@mui/material';
 import ColorPalette from './ColorPalette';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Primary', 'Secondary', 'Agent'];
+const navItems = ['HOME', '#REFORESTATION', 'LEADERBOARD', 'SOCIAL', 'PLANTING PROJECT'];
 
 function Navbar(props) {
     const { window } = props;
@@ -29,15 +30,15 @@ function Navbar(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
-            <Typography variant="h6" sx={{ my: 2 }} style={{ color: '#1976d2' }}>
+            <Typography variant="h6" sx={{ my: 2 }} color={"secondary"}>
                 CANVAS
             </Typography>
             <Divider />
             <List>
                 {navItems.map((item) => (
                 <ListItem key={item} disablePadding>
-                    <ListItemButton sx={{ textAlign: 'center' }} href={item=="Home" ? "/" : "/" + item.toLowerCase()}>
-                        <ListItemText primary={item} style={{ color: '#1976d2' }}/>
+                    <ListItemButton sx={{ textAlign: 'center' }} component={Link} smooth to={"/#" + item.toLowerCase()}>
+                        <ListItemText primary={item} sx={{ color: 'secondary.main' }}/>
                     </ListItemButton>
                 </ListItem>
                 ))}
@@ -63,7 +64,7 @@ function Navbar(props) {
                         </IconButton>
                         <IconButton color='inherit' sx={{ display: { xs: 'none', sm: 'block' }}}>
                             <Icon style={{width: '5vh', height: '5vh'}}>
-                                <img className='icon' src="/static/images/favicon.png"/>
+                                <img className='icon' src="/static/images/favicon.png" alt="logo"/>
                             </Icon>
                         </IconButton>
                         <Typography
@@ -75,7 +76,7 @@ function Navbar(props) {
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: {sm: 2, md: 3, lg: 4, xl: 5}}}>
                             {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#fff' }} href={item=="Home" ? "#" : "#" + item.toLowerCase()}>
+                            <Button key={item} sx={{ color: '#fff' }} component={Link} smooth to={"/#" + item.toLowerCase()}>
                                 {item}
                             </Button>
                             ))}
@@ -93,7 +94,7 @@ function Navbar(props) {
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: "primary.main" },
                     }}
                     >
                     {drawer}
