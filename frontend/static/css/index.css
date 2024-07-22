@@ -18,7 +18,6 @@
 /* FORM */
 .form {
     width: 100%;
-    margin: 2% auto;
     padding: 2% 3%;
     border-radius: 8px;
 }
@@ -90,4 +89,28 @@
 a {
     text-decoration: none;
     line-height: 0;
+}
+
+/* highlight color */
+::selection{
+    background-color: #053331;
+    color:#bda26d;
+}
+
+
+/* css class for <Typography> */
+.MuiTypography-root{
+    font-family: monospace !important;
+}
+
+.MuiInputBase-input{
+    font-family: monospace !important;
+}
+
+.MuiFormLabel-root{
+    font-family: monospace !important;
+}
+
+.MuiButtonBase-root{
+    font-family: monospace !important;  
 }

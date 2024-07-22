@@ -16,7 +16,7 @@ export default function Leaderboard() {
     const generateBoard = (data) => {
         let res = [];
         for (let i=0; i<30; i++) {
-            res.push(<></>)
+            res.push(<Stack></Stack>)
         }
     }
 
@@ -29,7 +29,6 @@ export default function Leaderboard() {
                         <CustomInput name="Search" type="text" label="Search" var={search} setVar={setSearch} color={"secondary"}/>
                         <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"secondary"}/>
                     </Stack>
-                    <Stack direction={"column"}></Stack>
                 </Stack>
             </Box>
         </form>
