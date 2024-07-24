@@ -21,6 +21,9 @@ export default function PlantingProgress(props) {
                     </Box>
                     <Typography variant="h5" color={"primary"}>{value}%</Typography>
                 </Stack>
+                <Stack className="col">
+                    <Typography variant="h4">{trees} out of {total}</Typography>
+                </Stack>
             </Stack>
             <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
                 <Typography variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>OUR SCHEDULE</Typography>
