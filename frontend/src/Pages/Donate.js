@@ -19,7 +19,7 @@ export default function Donate() {
     return (
         <form>
             <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                <Stack gap={5} className="form" maxWidth={'350px'} bgcolor={"white.main"}>
+                <Stack gap={4} className="form" maxWidth={'350px'} bgcolor={"white.main"}>
                     <Stack direction={"column"} gap={2} className="row center" flexWrap={"wrap"}>
                         <Stack className="col">
                             <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #REFORESTATION</Typography>
@@ -54,7 +54,7 @@ export default function Donate() {
                             </Stack>
                         </Stack>
                         <Stack className="col">
-                            <CustomInputNumber name="tree" label="Other Amount" var={tree} setVar={setTree} fullWidth color={"primary"}/>
+                            <CustomInputNumber name="tree" label="Other Amount" decimal var={tree} setVar={setTree} fullWidth color={"primary"}/>
                         </Stack>
                     </Stack>
                     <Stack direction={"row"}>

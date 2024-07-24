@@ -25,7 +25,7 @@ export default function Leaderboard() {
             <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
                 <Stack gap={3} direction={"column"}>
                     <Typography variant="h2" color={"primary"} fontSize={{xs: "2rem", sm: "3.75rem"}} textAlign={"center"}>LEADERBOARD</Typography>
-                    <Stack direction={"row"} gap={2}>
+                    <Stack direction={"row"} gap={5}>
                         <CustomInput name="Search" type="text" label="Search" var={search} setVar={setSearch} color={"secondary"}/>
                         <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"secondary"}/>
                     </Stack>
