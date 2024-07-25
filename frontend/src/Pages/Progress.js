@@ -22,7 +22,7 @@ export default function PlantingProgress(props) {
                     <Typography variant="h5" color={"primary"}>{value}%</Typography>
                 </Stack>
                 <Stack className="col">
-                    <Typography variant="h4">{trees} out of {total}</Typography>
+                    <Typography variant="h4">{props.trees} out of {props.total}</Typography>
                 </Stack>
             </Stack>
             <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
