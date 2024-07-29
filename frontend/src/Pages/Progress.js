@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Box, LinearProgress, Stack, Typography } from "@mui/material";
 
 export default function PlantingProgress(props) {
+    const addThousandSeparator = (value) => {
+        const parts = value.toString().split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return parts.join('.');
+    };
+
     const value = parseInt(props.trees)*100/parseInt(props.total);
     return (
         <Stack gap={3} direction={"column"} flexWrap={"wrap"} padding={'3%'}>
@@ -22,11 +28,13 @@ export default function PlantingProgress(props) {
                     <Typography variant="h5" color={"primary"}>{value}%</Typography>
                 </Stack>
                 <Stack className="col">
-                    <Typography variant="h4">{props.trees} out of {props.total}</Typography>
+                    <Typography variant="h4">{addThousandSeparator(props.trees)} tree(s) out of {addThousandSeparator(props.total)} trees</Typography>
                 </Stack>
             </Stack>
             <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
-                <Typography variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>OUR SCHEDULE</Typography>
+                <Stack className="col">
+                    <Typography variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}} textAlign={"center"}>OUR SCHEDULE</Typography>
+                </Stack>
             </Stack>
         </Stack>
     );

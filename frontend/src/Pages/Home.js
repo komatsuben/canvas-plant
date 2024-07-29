@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Stack, Typography } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
 import Donate from "./Donate";
@@ -14,8 +14,16 @@ export default function Home() {
         return parts.join('.');
     };
 
-    const [total, setTotal] = useState(1_000);
-    const [target, setTarget] = useState(10_000);
+    const [total, setTotal] = useState(0);
+    const target = 10_000;
+
+    useEffect(()=>{
+        fetch('/api/donation')
+        .then(response => response.json())
+        .then(data => {
+            setTotal(data.total);
+        })
+    }, [])
 
     return (
         <ColorPalette>
@@ -39,7 +47,7 @@ export default function Home() {
                         <Stack className="col">
                             <Typography variant="h1" color={"primary"} textAlign={"center"} fontSize={{xs: "3rem", sm: "6rem"}}>{addThousandSeparator(total)}</Typography>
                         </Stack>
-                        <Stack className="col" id={'#reforestation'}>
+                        <Stack className="col" id={'donate'}>
                             <Donate/>
                         </Stack>
                     </Stack>
@@ -55,7 +63,7 @@ export default function Home() {
                     <Stack>
                         <PlantingProgress trees={total} total={target} />
                     </Stack>
-                    <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.main" style={{borderRadius: '8px'}} id={'planting project'}>
+                    <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.light" style={{borderRadius: '8px'}} id={'planting project'}>
                         <PlantingProjects/>
                     </Stack>
                 </Stack>

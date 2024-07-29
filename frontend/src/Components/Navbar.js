@@ -18,7 +18,7 @@ import ColorPalette from './ColorPalette';
 import { HashLink as Link } from 'react-router-hash-link';
 
 const drawerWidth = 240;
-const navItems = ['HOME', '#REFORESTATION', 'LEADERBOARD', 'SOCIAL', 'PLANTING PROJECT'];
+const navItems = ['HOME', 'DONATE', 'LEADERBOARD', 'SOCIAL', 'PLANTING PROJECT'];
 
 function Navbar(props) {
     const { window } = props;

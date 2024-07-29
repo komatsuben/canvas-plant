@@ -139,6 +139,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PHONENUMBER_DEFAULT_FORMAT = 'INTERNATIONAL'
+PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'ID'
+
 django_heroku.settings(locals())
 
 # Heroku Setup

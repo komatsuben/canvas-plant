@@ -1,23 +1,29 @@
 import React, { Component, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
+import Success from "./Pages/Success";
+import SearchForm from "./Pages/Search";
+import Footer from "./Components/Footer";
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route exact path="/" Component={Home}/>
-                </Routes>
-            </Router>
+            <div className="app-container">
+                <Router>
+                    <Navbar />
+                    <main>
+                        <Routes>
+                            <Route exact path="/" Component={Home} />
+                            <Route exact path="/success" Component={Success} />
+                            <Route exact path="/search" Component={SearchForm} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </Router>
+            </div>
         );
     }
 }

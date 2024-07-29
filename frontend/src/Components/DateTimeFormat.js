@@ -2,9 +2,8 @@ import React from 'react';
 
 const DateTimeFormat = ({ timestamp }) => {
     const options = {
-        weekday: 'long',
         year: 'numeric',
-        month: 'long',
+        month: 'numeric',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
@@ -12,7 +11,7 @@ const DateTimeFormat = ({ timestamp }) => {
         timeZone: 'Asia/Jakarta',
     };
 
-    const formattedDate = new Date(timestamp).toLocaleString('en-US', options);
+    const formattedDate = new Date(timestamp).toLocaleString('en-US', options) + ' WIB';
     return formattedDate;
 };
 

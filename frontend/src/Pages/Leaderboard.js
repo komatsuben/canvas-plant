@@ -1,36 +1,77 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
-import CustomInput from "../Components/CustomInput";
+import { Box, Button, Chip, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
 import CustomToggle from "../Components/CustomToggle";
+import DateTimeFormat from "../Components/DateTimeFormat";
 
 export default function Leaderboard() {
-    const [search, setSearch] = useState('');
-    const [isRecent, setIsRecent] = useState(true);
-
     const addThousandSeparator = (value) => {
         const parts = value.toString().split('.');
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return parts.join('.');
     };
 
-    const generateBoard = (data) => {
-        let res = [];
-        for (let i=0; i<30; i++) {
-            res.push(<Stack></Stack>)
-        }
-    }
+    const [isRecent, setIsRecent] = useState(true);
+    const [mostRecent, setMostRecent] = useState([]);
+    const [mostTree, setMostTree] = useState([]);
+
+    useEffect(()=>{
+        fetch('/api/leaderboard/recent')
+        .then(response => response.json())
+        .then(data => {
+            setMostRecent(data);
+        })
+
+        fetch('/api/leaderboard/tree')
+        .then(response => response.json())
+        .then(data => {
+            setMostTree(data);
+        })
+    }, [])
 
     return (
-        <form>
-            <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                <Stack gap={3} direction={"column"}>
-                    <Typography variant="h2" color={"primary"} fontSize={{xs: "2rem", sm: "3.75rem"}} textAlign={"center"}>LEADERBOARD</Typography>
-                    <Stack direction={"row"} gap={5}>
-                        <CustomInput name="Search" type="text" label="Search" var={search} setVar={setSearch} color={"secondary"}/>
-                        <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"secondary"}/>
-                    </Stack>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <Stack gap={3} direction={"column"} width="100%" maxWidth="800px" padding={2}>
+                <Typography variant="h2" color={"primary"} fontSize={{xs: "2rem", sm: "3.75rem"}} textAlign={"center"}>LEADERBOARD</Typography>
+                <Stack direction={"row"} gap={4} className="col" justifyContent={"center"}>
+                    <Button startIcon={<SearchIcon/>} variant="contained" sx={{borderRadius:'32px', fontSize:'1.5rem'}}>
+                        <Link to={`/search`} target="_blank">
+                            <Typography fontSize={{xs: "0.5rem", sm:"0.875rem"}} color={"secondary"}>Search</Typography>
+                        </Link>
+                    </Button>
+                    <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"secondary"}/>
                 </Stack>
-            </Box>
-        </form>
+                <Stack gap={2} direction={"column"}>
+                    {isRecent ?
+                        mostRecent.map((data, index)=>(
+                            <Stack key={index} gap={1} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
+                                <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
+                                    <Typography variant="h5" color={"primary"}>{data.name}</Typography>
+                                    <Chip label={`${addThousandSeparator(data.tree)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
+                                </Stack>
+                                {data.message ? (
+                                    <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
+                                        <Typography variant="body1" color={"secondary"}>{data.message}</Typography>
+                                        <Typography variant="body2" color={"textSecondary"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
+                                    </Stack>
+                                ) : (
+                                    <Typography variant="body2" color={"textSecondary"} textAlign={"end"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
+                                )}
+                            </Stack>
+                        ))
+                    :
+                        mostTree.map((data, index)=>(
+                            <Stack key={index} gap={2} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
+                                <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
+                                    <Typography variant="h5" color={"primary"}>{data.name}</Typography>
+                                    <Chip label={`${addThousandSeparator(data.donation)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
+                                </Stack>
+                            </Stack>
+                        ))
+                    }
+                </Stack>
+            </Stack>
+        </Box>
     );
 }
