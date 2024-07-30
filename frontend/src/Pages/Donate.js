@@ -132,7 +132,7 @@ export default function Donate() {
                         <>
                             <Stack direction={"column"} gap={2} className="row center" flexWrap={"wrap"}>
                                 <Stack className="col">
-                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #REFORESTATION</Typography>
+                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #CANVASPLANT</Typography>
                                 </Stack>
                                 <Stack className="col">
                                     <Typography variant="p" color={"primary"} textAlign={"center"}>IDR {price} / tree</Typography>

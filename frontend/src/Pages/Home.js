@@ -31,7 +31,7 @@ export default function Home() {
                 <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
                     <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"}>
                         <Stack className="col" id={'home'}>
-                            <Typography variant="h2" color={"primary"} textAlign={"center"} fontSize={{xs: "2rem", sm: "3.75rem"}}>#REFORESTATION</Typography>
+                            <Typography variant="h2" color={"primary"} textAlign={"center"} fontSize={{xs: "2rem", sm: "3.75rem"}}>#CANVASPLANT</Typography>
                         </Stack>
                         <Stack className="col">
                             <Typography variant="h4" color={"primary"} textAlign={"center"} fontSize={{xs: "1.5rem", sm: "2.125rem"}}>JOIN THE MOVEMENT</Typography>
