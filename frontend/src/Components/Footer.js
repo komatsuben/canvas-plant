@@ -10,7 +10,7 @@ export default function Footer() {
             <Stack width={'100%'} className="form" bgcolor={"primary.main"} borderRadius={0}>
                 <Stack direction={"column"} gap={1}>
                     <Stack className="col">
-                        <Typography variant="h4" color={"secondary"} textAlign={"center"}>OUR SOCIAL MEDIA</Typography>
+                        <Typography id={'social'} variant="h4" color={"secondary"} textAlign={"center"}>OUR SOCIAL MEDIA</Typography>
                     </Stack>
                     <Stack className="col" direction={"row"} justifyContent={"center"} alignItems={"center"}>
                         <Button 
