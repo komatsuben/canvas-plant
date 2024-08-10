@@ -43,15 +43,15 @@ class GetTransaction(APIView):
 
 class GetTree(APIView):
     def get(self, request, format=None):
-        total_trees = Transaction.objects.filter(is_success=True).aggregate(Sum('tree'))
-        total_tree_count = total_trees['tree__sum'] if total_trees['tree__sum'] else 0
+        total_trees = Transaction.objects.filter(is_success=True, type="TREE").aggregate(Sum('amount'))
+        total_tree_count = total_trees['amount__sum'] if total_trees['amount__sum'] else 0
         data = {'total': total_tree_count}
         return Response(data, status=status.HTTP_200_OK)
 
 class GetMostTree(APIView):
     serializer_class = UserSerializer
     def get(self, request, format=None):
-        user = User.objects.exclude(donation=0).order_by('-donation')[:20]
+        user = User.objects.exclude(tree=0).order_by('-tree')[:20]
         data = UserSerializer(user, many=True).data
         return Response(data, status=status.HTTP_200_OK)
 

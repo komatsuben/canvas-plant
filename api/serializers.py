@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     phone = PhoneNumberField()
     class Meta:
         model = User
-        fields = ["email", "name", "phone", "donation"]
+        fields = ["email", "name", "phone", "tree", "donation"]
 
 class UserNestedSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -23,26 +23,26 @@ class TransactionSerializer(serializers.ModelSerializer):
     user = UserNestedSerializer()
     class Meta:
         model = Transaction
-        fields = ["id", "timestamp", "user", "tree", "message", "is_success"]
+        fields = ["id", "timestamp", "user", "amount", "message", "type", "is_success"]
 
 class LeaderboardSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='user.name', read_only=True)
     class Meta:
         model = Transaction
-        fields = ['name', 'message', 'timestamp', 'tree']
+        fields = ['name', 'message', 'timestamp', 'amount']
 
 class TransactionSerializerPOST(serializers.ModelSerializer):
     user = UserNestedSerializer()
-    tree = serializers.IntegerField()
+    amount = serializers.IntegerField()
     message = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:
         model = Transaction
-        fields = ["user", "tree", "message"]
+        fields = ["user", "amount", "message", "type"]
 
-    def validate_tree(self, value):
+    def validate_Amount(self, value):
         if value <= 0:
-            raise serializers.ValidationError("Tree amount must be a positive integer.")
+            raise serializers.ValidationError("Amount must be a positive integer.")
         return value
 
     def create(self, validated_data):

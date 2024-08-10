@@ -30,9 +30,7 @@ export default function Donate() {
     const navigate = useNavigate();
 
     const [next, setNext] = useState(false);
-    const [tree, setTree] = useState(0);
-    const [message, setMessage] = useState('');
-    const [price, setPrice] = useState(15000.00);
+    const [donation, setDonation] = useState(0);
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -64,8 +62,9 @@ export default function Donate() {
                 name: name,
                 phone: phone
             },
-            tree: tree,
-            message: message
+            amount: donation,
+            message: message,
+            type: "DONATE"
         };
 
         fetch('/api/transaction/post', {
@@ -110,9 +109,6 @@ export default function Donate() {
                                     <Stack className="col">
                                         <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"}/>
                                     </Stack>
-                                    <Stack className="col">
-                                        <CustomInput name="message" label="Message" var={message} setVar={setMessage} multiline rows={3} fullWidth/>
-                                    </Stack>
                                 </Stack>
                             </Stack>
                             <Stack direction={"row"} gap={1} flexWrap={"wrap"}>
@@ -132,39 +128,12 @@ export default function Donate() {
                         <>
                             <Stack direction={"column"} gap={2} className="row center" flexWrap={"wrap"}>
                                 <Stack className="col">
-                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #CANVASPLANT</Typography>
-                                </Stack>
-                                <Stack className="col">
-                                    <Typography variant="p" color={"primary"} textAlign={"center"}>IDR {price} / tree</Typography>
+                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>DONATE US</Typography>
                                 </Stack>
                             </Stack>
                             <Stack className="col" direction={"column"} gap={1} width={'100%'}>
-                                <Stack direction={"row"} flexWrap={"wrap"} className="col" gap={1}>
-                                    <Stack className="col">
-                                        <Button variant={tree==5 ? "contained" : "outlined"} onClick={()=>setTree(5)} color={"primary"}>
-                                            5 trees
-                                        </Button>
-                                    </Stack>
-                                    <Stack className="col">
-                                        <Button variant={tree==20 ? "contained" : "outlined"} onClick={()=>setTree(20)} color={"primary"}>
-                                            20 trees
-                                        </Button>
-                                    </Stack>
-                                </Stack>
-                                <Stack direction={"row"} flexWrap={"wrap"} className="col" gap={1}>
-                                    <Stack className="col">
-                                        <Button variant={tree==50 ? "contained" : "outlined"} onClick={()=>setTree(50)} color={"primary"}>
-                                            50 trees
-                                        </Button>
-                                    </Stack>
-                                    <Stack className="col">
-                                        <Button variant={tree==100 ? "contained" : "outlined"} onClick={()=>setTree(100)} color={"primary"}>
-                                            100 trees
-                                        </Button>
-                                    </Stack>
-                                </Stack>
                                 <Stack className="col">
-                                    <CustomInputNumber name="tree" label="Other Amount" var={tree} setVar={setTree} fullWidth color={"primary"}/>
+                                    <CustomInputNumber name="donation" label="Amount" var={donation} setVar={setDonation} fullWidth color={"primary"}/>
                                 </Stack>
                                 <Stack className="col">
                                     <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>

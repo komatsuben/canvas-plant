@@ -40,7 +40,7 @@ export default function Leaderboard() {
                             <Typography fontSize={{xs: "0.5rem", sm:"0.875rem"}} color={"secondary"}>Search</Typography>
                         </Link>
                     </Button>
-                    <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"secondary"}/>
+                    <CustomToggle var={isRecent} setVar={setIsRecent} values={[true, false]} labels={["MOST RECENT", "MOST TREES"]} exclusive color={"primary"}/>
                 </Stack>
                 <Stack gap={2} direction={"column"}>
                     {isRecent ?
@@ -48,7 +48,7 @@ export default function Leaderboard() {
                             <Stack key={index} gap={1} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
                                 <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
                                     <Typography variant="h5" color={"primary"}>{data.name}</Typography>
-                                    <Chip label={`${addThousandSeparator(data.tree)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
+                                    <Chip label={`${addThousandSeparator(data.amount)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
                                 </Stack>
                                 {data.message ? (
                                     <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
@@ -65,7 +65,7 @@ export default function Leaderboard() {
                             <Stack key={index} gap={2} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
                                 <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
                                     <Typography variant="h5" color={"primary"}>{data.name}</Typography>
-                                    <Chip label={`${addThousandSeparator(data.donation)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
+                                    <Chip label={`${addThousandSeparator(data.tree)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
                                 </Stack>
                             </Stack>
                         ))
