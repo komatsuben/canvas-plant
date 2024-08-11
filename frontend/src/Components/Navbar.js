@@ -17,19 +17,18 @@ import { Icon, Stack } from '@mui/material';
 import ColorPalette from './ColorPalette';
 import { HashLink as Link } from 'react-router-hash-link';
 
+const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -20 * window.innerHeight / 100; // -20vh
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+};
+
 const drawerWidth = 240;
-const navItems = ['HOME', 'TREE', 'LEADERBOARD', 'SOCIAL', 'PLANTING PROJECT'];
+const navItems = ['HOME', 'DONATE', 'LEADERBOARD', 'SOCIAL', 'PLANTING PROJECT'];
 
 function Navbar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const scrollWithOffset = (el) => {
-        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-        const yOffset = -20 * (window.innerHeight / 100); // 20vh offset
-        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
-    };
-    
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -44,7 +43,13 @@ function Navbar(props) {
             <List>
                 {navItems.map((item) => (
                 <ListItem key={item} disablePadding>
-                    <ListItemButton sx={{ textAlign: 'center' }} component={Link} smooth to={"/#" + item.toLowerCase()}>
+                    <ListItemButton 
+                        sx={{ textAlign: 'center' }} 
+                        component={Link} 
+                        smooth 
+                        to={"/#" + item.toLowerCase().replace(" ", "-")} 
+                        scroll={scrollWithOffset}
+                    >
                         <ListItemText primary={item} sx={{ color: 'secondary.main' }}/>
                     </ListItemButton>
                 </ListItem>
@@ -74,16 +79,16 @@ function Navbar(props) {
                                 <img className='icon' src="/static/images/header_logo.svg" alt="logo" style={{maxHeight: "8vh"}}/>
                             </Icon>
                         </IconButton>
-                        {/* <Typography
-                            variant="h6"
-                            component="div"
-                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                        >
-                            CANVAS
-                        </Typography> */}
                         <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: {sm: 2, md: 3, lg: 4, xl: 5}}}>
                             {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#fff' }} component={Link} smooth to={"/#" + item.toLowerCase()}>
+                            <Button 
+                                key={item} 
+                                sx={{ color: '#fff' }} 
+                                component={Link} 
+                                smooth 
+                                to={"/#" + item.toLowerCase().replace(" ", "-")}
+                                scroll={scrollWithOffset}
+                            >
                                 {item}
                             </Button>
                             ))}

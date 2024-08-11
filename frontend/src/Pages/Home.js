@@ -33,7 +33,7 @@ export default function Home() {
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
                         <Stack></Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"tree"}>
+                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"}>
                             <Tree/>
                         </Stack>
                         <Stack direction={"column"} flexWrap={'wrap'}>
@@ -48,7 +48,7 @@ export default function Home() {
                         <Stack bgcolor={"white.main"} borderRadius={'8px'} padding={"3% 2%"}>
                             <PlantingProgress trees={total} total={target} />
                         </Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.light" style={{borderRadius: '8px'}} id={'planting project'}>
+                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.light" style={{borderRadius: '8px'}} id={'planting-project'}>
                             <PlantingProjects/>
                         </Stack>
                         <Stack></Stack>
