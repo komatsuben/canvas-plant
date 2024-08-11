@@ -4,7 +4,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import CustomInput from "../Components/CustomInput";
 import CustomInputNumber from "../Components/CustomInputNumber";
 
-export default function Tree() {
+export default function Tree(props) {
     const addThousandSeparator = (value) => {
         const parts = value.toString().split('.');
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -53,7 +53,11 @@ export default function Tree() {
         .catch(error => {
             alert(error);
         });
-        setNext(true);
+        if (props.current_tree + parseInt(String(tree).replace(',', '')) <= props.target) {
+            setNext(true);
+        } else {
+            alert("Targeted tree limit exceed");
+        }
     }
 
     const handleForm = (event) => {
@@ -64,7 +68,7 @@ export default function Tree() {
                 name: name,
                 phone: phone
             },
-            amount: tree,
+            amount: parseInt(tree.replace(',', '')),
             message: message,
             type: "TREE"
         };
@@ -95,12 +99,12 @@ export default function Tree() {
     }, [price]);
 
     return (
-        <form onSubmit={handleForm}>
-            <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                <Stack gap={3} className="form" maxWidth={'350px'} bgcolor={"white.light"}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
+            <form onSubmit={handleForm} style={{ maxWidth: '350px', width: '100%' }}>
+                <Stack gap={3} className="form" bgcolor={"white.light"} justifyContent={"center"} height={"100%"}>
                     {next ? (
                         <>
-                            <Stack direction={"column"} gap={1}>
+                            <Stack className="col" direction={"column"} gap={1} width={'100%'}>
                                 <Stack className="col">
                                     <Typography variant="h5" color={"primary"} textAlign={"center"}>DETAILS</Typography>
                                 </Stack>
@@ -171,7 +175,7 @@ export default function Tree() {
                                     <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>
                                 </Stack>
                             </Stack>
-                            <Stack direction={"row"}>
+                            <Stack direction={"row"} flexWrap={"wrap"}>
                                 <Stack className="col">
                                     <Button variant="contained" color={"primary"} onClick={()=>{handleNext()}}>
                                         Next
@@ -181,7 +185,7 @@ export default function Tree() {
                         </>
                     )}
                 </Stack>
-            </Box>
-        </form>
+            </form>
+        </Box>
     );
 }

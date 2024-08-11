@@ -46,7 +46,7 @@ export default function Home() {
                             <Stack className="col" justifyContent={"center"} direction={"row"}>
                                 <CustomToggle var={isTree} setVar={setIsTree} values={[true, false]} labels={["TREE", "DONATE"]} exclusive color={"secondary"}/>
                             </Stack>
-                            {isTree ? (<Tree/>) : (<Donate/>)}
+                            {isTree ? (<Tree current_tree={total} target={target}/>) : (<Donate/>)}
                         </Stack>
                         <Stack direction={"column"} flexWrap={'wrap'}>
                             <Stack direction={'row'} justifyContent={'center'}>

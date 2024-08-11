@@ -63,9 +63,9 @@ export default function Donate() {
                 name: name,
                 phone: phone
             },
-            amount: donation,
+            amount: parseInt(donation.replace(',', '')),
             message: message,
-            type: "DONATE"
+            type: "DONATION"
         };
 
         fetch('/api/transaction/post', {
@@ -90,12 +90,12 @@ export default function Donate() {
     };
 
     return (
-        <form onSubmit={handleForm}>
-            <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                <Stack gap={3} className="form" maxWidth={'350px'} bgcolor={"white.light"}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
+            <form onSubmit={handleForm} style={{ maxWidth: '350px', width: '100%' }}>
+                <Stack gap={3} className="form" bgcolor={"white.light"} justifyContent={"center"} height={"100%"}>
                     {next ? (
                         <>
-                            <Stack direction={"column"} gap={1}>
+                            <Stack className="col" direction={"column"} gap={1} width={'100%'}>
                                 <Stack className="col">
                                     <Typography variant="h5" color={"primary"} textAlign={"center"}>DETAILS</Typography>
                                 </Stack>
@@ -149,7 +149,7 @@ export default function Donate() {
                         </>
                     )}
                 </Stack>
-            </Box>
-        </form>
+            </form>
+        </Box>
     );
 }

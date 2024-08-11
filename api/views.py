@@ -11,7 +11,6 @@ from rest_framework.views import APIView
 class GetUser(APIView):
     serializer_class = UserSerializer
     lookup_url_kwarg = 'email'
-    permission_classes = [IsSuperUser]
     
     def get(self, request, format=None):
         email = request.GET.get(self.lookup_url_kwarg)
