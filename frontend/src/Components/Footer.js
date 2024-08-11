@@ -8,19 +8,18 @@ import Wave from 'react-wavify';
 export default function Footer() {
     return (
         <ColorPalette>
-            <Box sx={{ position: 'relative', width: '100%', height: '10vh', overflow: 'hidden', bgcolor: '#2c6b70' }}>
+            <Stack sx={{ width: '100%', height: '10vh', bgcolor: '#2c6b70', marginBottom: "-1vh" }}>
                 <Wave
                     fill={'#1C4643'}
                     paused={false}
                     options={{
-                        height: 20,
                         amplitude: 20,
                         speed: 0.32,
                         points: 4
                     }}
                     style={{ width: '100%', height: '100%' }}
                 />
-            </Box>
+            </Stack>
             <Stack width={'100%'} className="form" bgcolor={"primary.dark"} borderRadius={0}>
                 <Stack direction={"column"} gap={1}>
                     <Stack className="col">

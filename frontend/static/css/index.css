@@ -33,7 +33,7 @@
     height: 100%;
 }
 
-img {
+img, svg {
     vertical-align: bottom;
     line-height: 0%;
 }
