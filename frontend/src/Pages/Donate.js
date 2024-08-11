@@ -31,6 +31,7 @@ export default function Donate() {
 
     const [next, setNext] = useState(false);
     const [donation, setDonation] = useState(0);
+    const [message, setMessage] = useState('');
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -88,10 +89,6 @@ export default function Donate() {
         });
     };
 
-    useEffect(()=>{
-        setPrice(addThousandSeparator(price));
-    }, [price]);
-
     return (
         <form onSubmit={handleForm}>
             <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
@@ -108,6 +105,9 @@ export default function Donate() {
                                     </Stack>
                                     <Stack className="col">
                                         <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"}/>
+                                    </Stack>
+                                    <Stack className="col">
+                                        <CustomInput name="message" label="Message" var={message} setVar={setMessage} multiline rows={3} fullWidth/>
                                     </Stack>
                                 </Stack>
                             </Stack>
@@ -128,12 +128,12 @@ export default function Donate() {
                         <>
                             <Stack direction={"column"} gap={2} className="row center" flexWrap={"wrap"}>
                                 <Stack className="col">
-                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>DONATE US</Typography>
+                                    <Typography variant="h5" color={"primary"} textAlign={"center"}>SPONSOR #CANVASPLANT</Typography>
                                 </Stack>
                             </Stack>
                             <Stack className="col" direction={"column"} gap={1} width={'100%'}>
                                 <Stack className="col">
-                                    <CustomInputNumber name="donation" label="Amount" var={donation} setVar={setDonation} fullWidth color={"primary"}/>
+                                    <CustomInputNumber name="donation" label="Amount" prefix={"IDR"} var={donation} setVar={setDonation} fullWidth color={"primary"}/>
                                 </Stack>
                                 <Stack className="col">
                                     <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>

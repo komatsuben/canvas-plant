@@ -165,7 +165,7 @@ export default function Tree() {
                                     </Stack>
                                 </Stack>
                                 <Stack className="col">
-                                    <CustomInputNumber name="tree" label="Other Amount" var={tree} setVar={setTree} fullWidth color={"primary"}/>
+                                    <CustomInputNumber name="tree" label="Other Amount" var={tree} setVar={setTree} fullWidth color={"primary"} unit={"tree"}/>
                                 </Stack>
                                 <Stack className="col">
                                     <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>

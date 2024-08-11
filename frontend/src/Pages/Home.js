@@ -3,10 +3,12 @@ import { Button, Container, Stack, Typography } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
 import Banner from "./Banner";
 import Tree from "./Tree";
+import Donate from "./Donate";
 import Leaderboard from "./Leaderboard";
 import PlantingProjects from "./PlantingProjects";
 import PlantingProgress from "./Progress";
 import { HashLink as Link } from 'react-router-hash-link';
+import CustomToggle from "../Components/CustomToggle";
 
 export default function Home() {
     const addThousandSeparator = (value) => {
@@ -17,6 +19,7 @@ export default function Home() {
 
     const [total, setTotal] = useState(0);
     const target = 10_000;
+    const [isTree, setIsTree] = useState(true);
 
     useEffect(()=>{
         fetch('/api/donation')
@@ -33,8 +36,17 @@ export default function Home() {
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
                         <Stack></Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"}>
-                            <Tree/>
+                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"} bgcolor={"primary.light"} borderRadius={'8px'} padding={"3% 2%"}>
+                            <Stack className="col">
+                                <Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>JOIN US</Typography>
+                                <Typography variant="p" color={"secondary"} textAlign={"center"} fontSize={{xs: "0.9rem", sm: "1rem"}}>
+                                    by sponsoring our event
+                                </Typography>
+                            </Stack>
+                            <Stack className="col" justifyContent={"center"} direction={"row"}>
+                                <CustomToggle var={isTree} setVar={setIsTree} values={[true, false]} labels={["TREE", "DONATE"]} exclusive color={"secondary"}/>
+                            </Stack>
+                            {isTree ? (<Tree/>) : (<Donate/>)}
                         </Stack>
                         <Stack direction={"column"} flexWrap={'wrap'}>
                             <Stack direction={'row'} justifyContent={'center'}>
@@ -45,7 +57,7 @@ export default function Home() {
                         <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={'leaderboard'} bgcolor={"secondary.light"} borderRadius={'8px'} padding={"3% 2%"}>
                             <Leaderboard/>
                         </Stack>
-                        <Stack bgcolor={"white.main"} borderRadius={'8px'} padding={"3% 2%"}>
+                        <Stack bgcolor={"#cecece"} borderRadius={'8px'} padding={"3% 2%"}>
                             <PlantingProgress trees={total} total={target} />
                         </Stack>
                         <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.light" style={{borderRadius: '8px'}} id={'planting-project'}>
