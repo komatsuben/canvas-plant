@@ -100,7 +100,7 @@ export default function Tree(props) {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
-            <form onSubmit={handleForm} style={{ maxWidth: '350px', width: '100%' }}>
+            <form onSubmit={handleForm} style={{ maxWidth: '450px', width: '100%' }}>
                 <Stack gap={3} className="form" bgcolor={"white.light"} justifyContent={"center"} height={"100%"}>
                     {next ? (
                         <>
