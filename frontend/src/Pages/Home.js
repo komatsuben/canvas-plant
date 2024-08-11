@@ -28,7 +28,7 @@ export default function Home() {
 
     return (
         <ColorPalette>
-            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 80%);`}}>
+            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>
                 <Banner total={total}/>
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>

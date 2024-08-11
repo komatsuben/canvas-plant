@@ -7,7 +7,7 @@ export default function Success() {
     const navigate = useNavigate();
     return (
         <ColorPalette>
-            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 80%);`}}>
+            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>
                 <Container fixed sx={{display: 'flex', minHeight: '70vh', justifyContent: 'center', alignItems: 'center'}}>
                     <Stack gap={3} maxWidth={"500px"} className="form" bgcolor={"white.light"}>
                         <Stack direction={"column"} gap={1}>

@@ -60,7 +60,7 @@ export default function SearchForm() {
 
     return (
         <ColorPalette>
-            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 80%);`}}>
+            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>
                 <Container fixed sx={{display: 'flex', minHeight: '70vh', justifyContent: 'center'}}>
                     <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
                         <Stack gap={3} direction={"column"} width="100%" maxWidth="800px" padding={2} bgcolor={'white.light'} borderRadius={'8px'}>
