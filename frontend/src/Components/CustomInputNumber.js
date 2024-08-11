@@ -39,7 +39,6 @@ export default function CustomInputNumber(props) {
             helperText={props.helperText}
             color={props.color}
             InputProps={{
-                type: "number",
                 startAdornment: (<InputAdornment position="start">{props.prefix}</InputAdornment>),
                 endAdornment: (<InputAdornment position="end">{props.unit}</InputAdornment>)
             }}
@@ -59,7 +58,6 @@ export default function CustomInputNumber(props) {
             helperText={props.helperText}
             color={props.color}
             InputProps={{
-                type: "number",
                 endAdornment: (<InputAdornment position="end">{props.unit}</InputAdornment>)
             }}
             fullWidth={props.fullWidth}
