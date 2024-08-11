@@ -60,45 +60,47 @@ export default function SearchForm() {
 
     return (
         <ColorPalette>
-            <Container fixed sx={{display: 'flex', minHeight: '70vh', justifyContent: 'center'}}>
-                <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                    <Stack gap={3} direction={"column"} width="100%" maxWidth="800px" padding={2}>
-                        <Typography variant="h2" color={"primary"} fontSize={{xs: "2rem", sm: "3.75rem"}} textAlign={"center"}>SEARCH</Typography>
-                        <Stack direction={"row"} gap={4} className="col" justifyContent={"space-evenly"}>
-                            <CustomInput endIcon={<SearchIcon/>} name="Search" type="text" label="Search" var={keyword} setVar={setKeyword} color={"secondary"}/>
-                            <CustomToggle var={field} setVar={setField} values={["user__name", "message", "timestamp"]} labels={["NAME", "MESSAGE", "DATE"]} exclusive color={"secondary"}/>
-                        </Stack>
-                        <Stack gap={2} direction={"column"}>
-                            {
-                                results.length>0 ? (
-                                    results.map((data, index)=>(
-                                        <Stack key={index} gap={1} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
-                                            <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
-                                                <Typography variant="h5" color={"primary"}>{data.user.name}</Typography>
-                                                <Chip label={`${addThousandSeparator(data.tree)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
-                                            </Stack>
-                                            {data.message ? (
+            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 80%);`}}>
+                <Container fixed sx={{display: 'flex', minHeight: '70vh', justifyContent: 'center'}}>
+                    <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                        <Stack gap={3} direction={"column"} width="100%" maxWidth="800px" padding={2} bgcolor={'white.light'} borderRadius={'8px'}>
+                            <Typography variant="h2" color={"primary"} fontSize={{xs: "2rem", sm: "3.75rem"}} textAlign={"center"}>SEARCH</Typography>
+                            <Stack direction={"row"} gap={4} className="col" justifyContent={"space-evenly"}>
+                                <CustomInput endIcon={<SearchIcon/>} name="Search" type="text" label="Search" var={keyword} setVar={setKeyword} color={"secondary"}/>
+                                <CustomToggle var={field} setVar={setField} values={["user__name", "message", "timestamp"]} labels={["NAME", "MESSAGE", "DATE"]} exclusive color={"secondary"}/>
+                            </Stack>
+                            <Stack gap={2} direction={"column"}>
+                                {
+                                    results.length>0 ? (
+                                        results.map((data, index)=>(
+                                            <Stack key={index} gap={1} padding={2} className="form" bgcolor={"white.light"} borderRadius={2}>
                                                 <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
-                                                    <Typography variant="body1" color={"secondary"}>{data.message}</Typography>
-                                                    <Typography variant="body2" color={"textSecondary"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
+                                                    <Typography variant="h5" color={"primary"}>{data.user.name}</Typography>
+                                                    <Chip label={`${addThousandSeparator(data.amount)} tree(s)`} sx={{fontSize: "0.8em"}} variant="outlined" color={"primary"}/>
                                                 </Stack>
-                                            ) : (
-                                                <Typography variant="body2" color={"textSecondary"} textAlign={"end"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
-                                            )}
-                                        </Stack>
-                                    ))
-                                ) : (
-                                    keyword ? (
-                                        <Typography variant="body2" color={"textSecondary"} textAlign={"center"}>No results found</Typography>
+                                                {data.message ? (
+                                                    <Stack direction={"row"} flexWrap={"wrap"} justifyContent="space-between" alignItems="center">
+                                                        <Typography variant="body1" color={"secondary"}>{data.message}</Typography>
+                                                        <Typography variant="body2" color={"textSecondary"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
+                                                    </Stack>
+                                                ) : (
+                                                    <Typography variant="body2" color={"textSecondary"} textAlign={"end"}><DateTimeFormat timestamp={data.timestamp}/></Typography>
+                                                )}
+                                            </Stack>
+                                        ))
                                     ) : (
-                                        <Typography variant="body2" color={"textSecondary"} textAlign={"center"}>You can search the previous successful donation</Typography>
+                                        keyword ? (
+                                            <Typography variant="body2" color={"textSecondary"} textAlign={"center"}>No results found</Typography>
+                                        ) : (
+                                            <Typography variant="body2" color={"textSecondary"} textAlign={"center"}>You can search the previous successful donation</Typography>
+                                        )
                                     )
-                                )
-                            }
+                                }
+                            </Stack>
                         </Stack>
-                    </Stack>
-                </Box>
-            </Container>
+                    </Box>
+                </Container>
+            </Stack>
         </ColorPalette>
     );
 }

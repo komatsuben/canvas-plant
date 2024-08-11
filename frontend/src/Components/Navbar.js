@@ -24,6 +24,13 @@ function Navbar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -20 * (window.innerHeight / 100); // 20vh offset
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+    };
+    
+
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };

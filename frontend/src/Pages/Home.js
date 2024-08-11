@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Stack, Typography } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
+import Banner from "./Banner";
 import Tree from "./Tree";
 import Leaderboard from "./Leaderboard";
 import PlantingProjects from "./PlantingProjects";
@@ -27,36 +28,18 @@ export default function Home() {
 
     return (
         <ColorPalette>
-            <Stack bgcolor={"dark_forest.main"}>
-
+            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 80%);`}}>
+                <Banner total={total}/>
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor={"white.main"} borderRadius={'8px'} padding={"3% 2%"}>
-                            <Stack className="col" id={'home'}>
-                                <Typography variant="h2" color={"primary"} textAlign={"center"} fontSize={{xs: "2rem", sm: "3.75rem"}}>#CANVASPLANT</Typography>
-                            </Stack>
-                            <Stack className="col">
-                                <Typography variant="h4" color={"primary"} textAlign={"center"} fontSize={{xs: "1.5rem", sm: "2.125rem"}}>JOIN THE MOVEMENT</Typography>
-                            </Stack>
-                            <Stack className="col">
-                                <Typography variant="p" color={"primary"} textAlign={"center"} fontSize={{xs: "0.9rem", sm: "1rem"}}>
-                                    The 17 UN Sustainable Development Goals (SDGs) are a plan to create a better 
-                                    and more sustainable future for all. <br/>
-                                    Reforestation and land restoration help to benefit all 17 SDGs. 
-                                    Plant with us and track our progress!
-                                </Typography>
-                            </Stack>
-                            <Stack className="col">
-                                <Typography variant="h1" color={"primary"} textAlign={"center"} fontSize={{xs: "3rem", sm: "6rem"}}>{addThousandSeparator(total)}</Typography>
-                            </Stack>
-                        </Stack>
+                        <Stack></Stack>
                         <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"tree"}>
                             <Tree/>
                         </Stack>
                         <Stack direction={"column"} flexWrap={'wrap'}>
                             <Stack direction={'row'} justifyContent={'center'}>
                                 <Button variant="contained" sx={{borderRadius:'32px', fontSize:'1.5rem'}} 
-                                component={Link} smooth to={"/#planting project"}><Typography color={"secondary"} variant="h4">Our Planting Project</Typography></Button>
+                                component={Link} smooth to={"/#planting project"}><Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>Our Planting Project</Typography></Button>
                             </Stack>
                         </Stack>
                         <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={'leaderboard'} bgcolor={"secondary.light"} borderRadius={'8px'} padding={"3% 2%"}>

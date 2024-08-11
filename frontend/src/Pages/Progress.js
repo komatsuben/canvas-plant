@@ -28,7 +28,7 @@ export default function PlantingProgress(props) {
                     <Typography variant="h5" color={"primary"}>{value}%</Typography>
                 </Stack>
                 <Stack className="col">
-                    <Typography variant="h4" color={"secondary"}>{addThousandSeparator(props.trees)} tree(s) out of {addThousandSeparator(props.total)} trees</Typography>
+                    <Typography variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}} color={"primary"}>{addThousandSeparator(props.trees)} tree(s) out of {addThousandSeparator(props.total)} trees</Typography>
                 </Stack>
             </Stack>
             {/* <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
