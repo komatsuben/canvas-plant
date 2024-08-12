@@ -63,7 +63,7 @@ export default function Donate() {
                 name: name,
                 phone: phone
             },
-            amount: parseInt(donation.replace(',', '')),
+            amount: parseInt(String(donation).replace(',', '')),
             message: message,
             type: "DONATION"
         };

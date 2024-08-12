@@ -68,7 +68,7 @@ export default function Tree(props) {
                 name: name,
                 phone: phone
             },
-            amount: parseInt(tree.replace(',', '')),
+            amount: parseInt(String(tree).replace(',', '')),
             message: message,
             type: "TREE"
         };
