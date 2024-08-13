@@ -36,7 +36,7 @@ export default function Home() {
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
                         <Stack></Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"} bgcolor={"primary.light"} borderRadius={'8px'} padding={"3% 2%"}>
+                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"} bgcolor={"forest.light"} borderRadius={'8px'} padding={"3% 2%"}>
                             <Stack className="col">
                                 <Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>JOIN US</Typography>
                                 <Typography variant="p" color={"secondary"} textAlign={"center"} fontSize={{xs: "0.9rem", sm: "1rem"}}>
@@ -51,7 +51,7 @@ export default function Home() {
                         <Stack direction={"column"} flexWrap={'wrap'}>
                             <Stack direction={'row'} justifyContent={'center'}>
                                 <Button variant="contained" sx={{borderRadius:'32px', fontSize:'1.5rem'}} 
-                                component={Link} smooth to={"/#planting project"}><Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>Our Planting Project</Typography></Button>
+                                component={Link} smooth to={"/#planting-project"}><Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>Our Planting Project</Typography></Button>
                             </Stack>
                         </Stack>
                         <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={'leaderboard'} bgcolor={"secondary.light"} borderRadius={'8px'} padding={"3% 2%"}>
@@ -60,7 +60,7 @@ export default function Home() {
                         <Stack bgcolor={"#cecece"} borderRadius={'8px'} padding={"3% 2%"}>
                             <PlantingProgress trees={total} total={target} />
                         </Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor="secondary.light" style={{borderRadius: '8px'}} id={'planting-project'}>
+                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor={"secondary.light"} style={{borderRadius: '8px'}} id={'planting-project'}>
                             <PlantingProjects/>
                         </Stack>
                         <Stack></Stack>
