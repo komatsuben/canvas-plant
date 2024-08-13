@@ -15,13 +15,13 @@ export default function PlantingProjects() {
             </Stack>
             <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
                 <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                    Komunitas CANVAS, dengan semangat kepedulian terhadap lingkungan, menginisiasi program CANVASPLANT untuk mengembalikan kejayaan ekosistem mangrove di Kecamatan Muara Gembong. Desa Pantai Bahagia, yang pernah dikenal sebagai Kampung Dollar, kini menghadapi tantangan serius akibat abrasi. Melalui aksi nyata penanaman mangrove, CANVAS berupaya mengembalikan fungsi hutan mangrove sebagai pelindung pantai dari abrasi, sekaligus menghidupkan kembali keanekaragaman hayati di wilayah ini.
+                    Komunitas CANVAS, dengan semangat kepedulian terhadap lingkungan, menginisiasi program CANVAS PLANT untuk mengembalikan kejayaan ekosistem mangrove di Kecamatan Muara Gembong. Desa Pantai Bahagia, yang pernah dikenal sebagai Kampung Dollar, kini menghadapi tantangan serius akibat abrasi. Melalui aksi nyata penanaman mangrove, CANVAS berupaya mengembalikan fungsi hutan mangrove sebagai pelindung pantai dari abrasi, sekaligus menghidupkan kembali keanekaragaman hayati di wilayah ini.
                 </Typography>
                 <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                    Kegiatan CANVASPLANT tidak hanya sekadar menanam pohon, tetapi juga melibatkan edukasi kepada masyarakat setempat mengenai pentingnya menjaga kelestarian mangrove. Dengan melibatkan berbagai pihak, mulai dari pemerintah desa, kelompok masyarakat, hingga siswa sekolah, diharapkan program ini dapat menumbuhkan kesadaran kolektif untuk menjaga lingkungan. Selain itu, CANVAS juga akan melakukan monitoring dan perawatan terhadap tanaman mangrove yang telah ditanam, sehingga keberlangsungan program ini dapat terjamin.
+                    Kegiatan CANVAS PLANT tidak hanya sekadar menanam pohon, tetapi juga melibatkan edukasi kepada masyarakat setempat mengenai pentingnya menjaga kelestarian mangrove. Dengan melibatkan berbagai pihak, mulai dari pemerintah desa, kelompok masyarakat, hingga siswa sekolah, diharapkan program ini dapat menumbuhkan kesadaran kolektif untuk menjaga lingkungan. Selain itu, CANVAS juga akan melakukan monitoring dan perawatan terhadap tanaman mangrove yang telah ditanam, sehingga keberlangsungan program ini dapat terjamin.
                 </Typography>
                 <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                    Melalui CANVASPLANT, CANVAS berharap dapat memberikan kontribusi nyata dalam upaya pelestarian lingkungan di Kecamatan Muara Gembong. Selain itu, program ini juga diharapkan dapat menginspirasi orang lain untuk turut serta dalam menjaga kelestarian alam. Dengan bekerja sama, kita dapat menciptakan lingkungan yang lebih baik untuk generasi mendatang.
+                    Melalui CANVAS PLANT, CANVAS berharap dapat memberikan kontribusi nyata dalam upaya pelestarian lingkungan di Kecamatan Muara Gembong. Selain itu, program ini juga diharapkan dapat menginspirasi orang lain untuk turut serta dalam menjaga kelestarian alam. Dengan bekerja sama, kita dapat menciptakan lingkungan yang lebih baik untuk generasi mendatang.
                 </Typography>
  
                 <Typography color={"primary"} variant="h4" marginInline={"5%"} textAlign={"justify"} fontSize={{xs: "1.5rem", sm: "2.125rem"}}>
@@ -33,8 +33,16 @@ export default function PlantingProjects() {
                     </i>
                 </Typography>
                 <Typography color={"primary"} variant="h5" marginInline={"10%"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                    <i>Michael Fernando, Ketua Umum CANVASPLANT</i>
+                    <i>Michael Fernando, Ketua Umum CANVAS PLANT</i>
                 </Typography>
+            </Stack>
+            <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
+                <img src="/static/images/CANVAS_member.jpeg" style={{maxWidth: "100%"}} />
+                <Stack className="col" direction={"row"} justifyContent={"center"}>
+                    <Typography color={"primary"} variant="p" textAlign={"center"} width={"80%"}>
+                        Anggota CANVAS (2 barisan depan) dengan Mahasiswa Atmi Cikarang (barisan belakang) pada kegiatan CANVAS CAMP, sebuah kegiatan dimana anggota CANVAS belajar cara mengolah sampah plastik secara berkelanjutan
+                    </Typography>
+                </Stack>
             </Stack>
         </Stack>
     );

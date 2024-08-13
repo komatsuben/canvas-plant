@@ -8,7 +8,7 @@ import Popup from "../Components/Popup";
 export default function Success() {
     const navigate = useNavigate();
     const [popup, setPopup] = useState(false);
-    const rekening = [2843334440, "Aaron Hartono"];
+    const rekening = ["342-7702777", "YAY BUDI SISWA"];
     const [isQRIS, setIsQRIS] = useState(true);
     return (
         <ColorPalette>
@@ -23,10 +23,10 @@ export default function Success() {
                         ) : (
                             <>
                                 <Typography variant="h5" color={"primary"} textAlign={"center"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                                    Rekening: <b>{rekening[0]}</b>
+                                    No. Rekening: <b>{rekening[0]}</b>
                                 </Typography>
                                 <Typography variant="h5" color={"primary"} textAlign={"center"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
-                                    Atas Nama <b>{rekening[1]}</b>
+                                    Nama: <b>{rekening[1]}</b>
                                 </Typography>
                             </>
                         )}
