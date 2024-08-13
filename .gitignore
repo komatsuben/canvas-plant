@@ -5,3 +5,5 @@ db.sqlite3
 .vscode
 node_modules
 migrations
+*.crt
+*.key
