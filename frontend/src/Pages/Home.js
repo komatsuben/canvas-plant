@@ -18,7 +18,7 @@ export default function Home() {
     };
 
     const [total, setTotal] = useState(0);
-    const target = 10_000;
+    const target = 1_000;
     const [isTree, setIsTree] = useState(true);
 
     useEffect(()=>{
