@@ -14,11 +14,11 @@ export default function Success() {
         <ColorPalette>
             <Popup title={"QRIS"} trigger={popup} setTrigger={setPopup}>
                 <Stack direction={"column"} justifyContent={"center"} alignItems={"center"} gap={2}>
-                    <Stack className="col">
+                    {/* <Stack className="col">
                         <CustomToggle var={isQRIS} setVar={setIsQRIS} values={[true, false]} labels={["QRIS", "Rekening"]} exclusive color={"primary"}/>
-                    </Stack>
+                    </Stack> */}
                     <Stack className="col">
-                        {isQRIS ? (
+                        {/* {isQRIS ? (
                             <img src="/static/images/qris.jpg"/>
                         ) : (
                             <>
@@ -29,7 +29,8 @@ export default function Success() {
                                     Nama: <b>{rekening[1]}</b>
                                 </Typography>
                             </>
-                        )}
+                        )} */}
+                        <img src="/static/images/qris.jpg"/>
                     </Stack>
                 </Stack>
             </Popup>
