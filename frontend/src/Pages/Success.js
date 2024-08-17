@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Container, Stack, Typography } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
 import CustomToggle from "../Components/CustomToggle";
@@ -8,8 +8,24 @@ import Popup from "../Components/Popup";
 export default function Success(props) {
     const navigate = useNavigate();
     const [popup, setPopup] = useState(false);
-    const rekening = ["342-7702777", "YAY BUDI SISWA"];
-    const [isQRIS, setIsQRIS] = useState(true);
+    const [searchParams] = useSearchParams();
+    // const rekening = ["342-7702777", "YAY BUDI SISWA"];
+    // const [isQRIS, setIsQRIS] = useState(true);
+    const [price, setPrice] = useState(parseInt(searchParams.get('price')));
+    
+    useEffect(()=>{
+        if (price==null) {
+            navigate('/');
+        }
+        setPrice(price+64);
+    }, []);
+
+    const addThousandSeparator = (value) => {
+        const parts = value.toString().split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return parts.join('.');
+    };
+
     return (
         <ColorPalette>
             <Popup title={"QRIS"} trigger={popup} setTrigger={setPopup}>
@@ -41,7 +57,10 @@ export default function Success(props) {
                             <Stack className="col">
                                 <Typography variant="h2" color={"primary"} textAlign={"center"}>SAVED</Typography>
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
+                            <Stack className="col">
+                                <Typography variant="h2" color={"primary"} textAlign={"center"}>Rp {addThousandSeparator(price)}</Typography>
+                            </Stack>
+                            <Stack direction={"column"} gap={0.5}>
                                 <Stack className="col">
                                     <Typography variant="h5" color={"secondary"} textAlign={"center"} fontSize={{xs: "1rem", sm: "1.5rem"}}>Your data transaction has been saved</Typography>
                                 </Stack>
@@ -50,6 +69,9 @@ export default function Success(props) {
                                 </Stack>
                                 <Stack className="col">
                                     <Typography variant="h5" color={"secondary"} textAlign={"center"} fontSize={{xs: "1rem", sm: "1.5rem"}}>It may take some time to publish your transaction</Typography>
+                                </Stack>
+                                <Stack className="col">
+                                    <Typography variant="h5" color={"forest.light"} textAlign={"center"} fontSize={{xs: "1rem", sm: "1.5rem"}}><b>64</b>, which is the payment code, must be added</Typography>
                                 </Stack>
                             </Stack>
                         </Stack>

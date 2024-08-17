@@ -53,11 +53,12 @@ export default function Tree(props) {
         .catch(error => {
             alert(error);
         });
-        if (props.current_tree + parseInt(String(tree).replace(',', '')) <= props.target) {
-            setNext(true);
-        } else {
-            alert("Targeted tree limit exceed");
-        }
+        // if (props.current_tree + parseInt(String(tree).replace(',', '')) <= props.target) {
+        //     setNext(true);
+        // } else {
+        //     alert("Targeted tree limit exceed");
+        // }
+        setNext(true);
     }
 
     const handleForm = (event) => {
@@ -84,7 +85,7 @@ export default function Tree(props) {
         .then(response => response.json())
         .then(data => {
             if (data.status === "Accepted") {
-                navigate('/success');
+                navigate(`/success/?price=${parseInt(String(tree).replace(',', ''))*15_000}`);
             } else {
                 alert(JSON.stringify(data.error));
             }
@@ -110,7 +111,7 @@ export default function Tree(props) {
                                 </Stack>
                                 <Stack direction={"column"} gap={2}>
                                     <Stack className="col">
-                                        <CustomInput name="name" label="Display Name" type={"text"} var={name} setVar={setName} fullWidth color={"primary"}/>
+                                        <CustomInput name="name" label="Display Name" type={"text"} helperText={"Gunakan nama lengkap Anda (Please use your fullname)"} var={name} setVar={setName} fullWidth color={"primary"}/>
                                     </Stack>
                                     <Stack className="col">
                                         <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"}/>

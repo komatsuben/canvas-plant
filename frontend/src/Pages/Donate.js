@@ -5,12 +5,6 @@ import CustomInput from "../Components/CustomInput";
 import CustomInputNumber from "../Components/CustomInputNumber";
 
 export default function Donate() {
-    const addThousandSeparator = (value) => {
-        const parts = value.toString().split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return parts.join('.');
-    };
-
     const getCookie = (name) => {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -79,7 +73,7 @@ export default function Donate() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "Accepted") {
-                navigate('/success');
+                navigate(`/success/?price=${parseInt(String(donation).replace(',', ''))}`);
             } else {
                 alert(JSON.stringify(data.error));
             }
