@@ -95,7 +95,7 @@ export default function Donate() {
                                 </Stack>
                                 <Stack direction={"column"} gap={2}>
                                     <Stack className="col">
-                                        <CustomInput name="name" label="Display Name" type={"text"} var={name} setVar={setName} fullWidth color={"primary"}/>
+                                        <CustomInput name="name" label="Display Name" type={"text"} helperText={"Gunakan nama lengkap Anda (Please use your fullname)"} var={name} setVar={setName} fullWidth color={"primary"}/>
                                     </Stack>
                                     <Stack className="col">
                                         <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"}/>
