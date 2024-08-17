@@ -69,7 +69,7 @@ export default function Tree(props) {
                 name: name,
                 phone: phone
             },
-            amount: parseInt(String(tree).replace(',', '')),
+            amount: parseInt(String(tree).replaceAll(',', '')),
             message: message,
             type: "TREE"
         };
@@ -85,7 +85,7 @@ export default function Tree(props) {
         .then(response => response.json())
         .then(data => {
             if (data.status === "Accepted") {
-                navigate(`/success/?price=${parseInt(String(tree).replace(',', ''))*15_000}`);
+                navigate(`/success/?price=${parseInt(String(tree).replaceAll(',', ''))*15_000}`);
             } else {
                 alert(JSON.stringify(data.error));
             }

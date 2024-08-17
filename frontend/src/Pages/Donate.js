@@ -57,7 +57,7 @@ export default function Donate() {
                 name: name,
                 phone: phone
             },
-            amount: parseInt(String(donation).replace(',', '')),
+            amount: parseInt(String(donation).replaceAll(',', '')),
             message: message,
             type: "DONATION"
         };
@@ -73,7 +73,7 @@ export default function Donate() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "Accepted") {
-                navigate(`/success/?price=${parseInt(String(donation).replace(',', ''))}`);
+                navigate(`/success/?price=${parseInt(String(donation).replaceAll(',', ''))}`);
             } else {
                 alert(JSON.stringify(data.error));
             }
