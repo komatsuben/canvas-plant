@@ -5,7 +5,7 @@ import ColorPalette from "../Components/ColorPalette";
 import CustomToggle from "../Components/CustomToggle";
 import Popup from "../Components/Popup";
 
-export default function Success() {
+export default function Success(props) {
     const navigate = useNavigate();
     const [popup, setPopup] = useState(false);
     const rekening = ["342-7702777", "YAY BUDI SISWA"];
