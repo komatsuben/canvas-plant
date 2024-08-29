@@ -11,7 +11,7 @@ def toggle_is_success(modeladmin, request, queryset):
 class TransactionAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Transaction._meta.fields]
     readonly_fields = [field.name for field in Transaction._meta.fields if field.name != 'is_success']
-    fields = ('is_success', 'amount', 'type')
+    fields = ['is_success', 'amount', 'type']
     ordering = ['id']
     
     actions = [toggle_is_success]
