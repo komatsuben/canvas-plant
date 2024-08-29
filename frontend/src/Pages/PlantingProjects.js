@@ -19,6 +19,9 @@ export default function PlantingProjects() {
                 </Stack>
                 <Stack direction={"row"} gap={2} flexWrap={"wrap"}>
                     <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
+                        Canisius Vanguard SDGs (Canvas) adalah komunitas di Kolese Kanisius yang berfokus pada implementasi Sustainable Development Goals (SDGs) dalam lingkup sekolah, bertujuan untuk mengembangkan keterampilan dan gaya hidup berkelanjutan. Sebagai pelopor aksi, komunitas ini berupaya mendorong kolaborasi dan inovasi yang mendukung prinsip-prinsip SDGs, serta menciptakan kegiatan dan proyek yang bermanfaat bagi banyak pihak.
+                    </Typography>
+                    <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
                         Komunitas CANVAS, dengan semangat kepedulian terhadap lingkungan, menginisiasi program CANVAS PLANT untuk mengembalikan kejayaan ekosistem mangrove di Kecamatan Muara Gembong. Desa Pantai Bahagia, yang pernah dikenal sebagai Kampung Dollar, kini menghadapi tantangan serius akibat abrasi. Melalui aksi nyata penanaman mangrove, CANVAS berupaya mengembalikan fungsi hutan mangrove sebagai pelindung pantai dari abrasi, sekaligus menghidupkan kembali keanekaragaman hayati di wilayah ini.
                     </Typography>
                     <Typography color={"primary"} variant="h5" textAlign={"justify"} fontSize={{xs: "1rem", sm: "1.5rem"}}>
