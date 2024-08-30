@@ -107,7 +107,7 @@ export default function Donate() {
                             </Stack>
                             <Stack direction={"row"} gap={1} flexWrap={"wrap"}>
                                 <Stack className="col">
-                                    <Button variant="contained" color={"primary"} type="submit">
+                                    <Button variant="contained" color={"primary"} type="submit" disabled>
                                         Submit
                                     </Button>
                                 </Stack>
