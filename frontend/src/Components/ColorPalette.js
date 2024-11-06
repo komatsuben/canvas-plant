@@ -1,12 +1,13 @@
 import React from "react";
-import { createTheme, ThemeProvider, alpha, getContrastRatio } from "@mui/material"; 
+import { createTheme, ThemeProvider, alpha, getContrastRatio } from "@mui/material";
 
 export default function ColorPalette(props) {
     let black_primary = '#0b1f1e';
     let dark_primary = '#053331';
     let primary = '#296460';
     let secondary = '#bda26d';
-    let white = '#d7d9d8';
+    // let white = '#d7d9d8';
+    let white = '#F6FAF9';
 
     let theme = createTheme({});
     theme = createTheme(theme, {
