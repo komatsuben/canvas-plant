@@ -47,7 +47,7 @@ function Navbar(props) {
                         sx={{ textAlign: 'center' }} 
                         component={Link} 
                         smooth 
-                        to={"/#" + item.toLowerCase().replace(" ", "-")} 
+                        to={"/plant/" + item.toLowerCase().replace(" ", "-")} 
                         scroll={scrollWithOffset}
                     >
                         <ListItemText primary={item} sx={{ color: 'secondary.main' }}/>
@@ -86,7 +86,7 @@ function Navbar(props) {
                                 sx={{ color: '#fff' }} 
                                 component={Link} 
                                 smooth 
-                                to={"/#" + item.toLowerCase().replace(" ", "-")}
+                                to={"/plant/" + item.toLowerCase().replace(" ", "-")}
                                 scroll={scrollWithOffset}
                             >
                                 {item}

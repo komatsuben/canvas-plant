@@ -17,10 +17,10 @@ export default class App extends Component {
                     <Navbar />
                     <main>
                         <Routes>
-                            <Route exact path="/" Component={Home} />
-                            <Route exact path="/success" Component={Success} />
-                            <Route exact path="/search" Component={SearchForm} />
-                            <Route exact path="/main" Component={Landing} />
+                            <Route exact path="/" Component={Landing} />
+                            <Route exact path="/plant" Component={Home} />
+                            <Route exact path="/plant/success" Component={Success} />
+                            <Route exact path="/plant/search" Component={SearchForm} />
                         </Routes>
                     </main>
                     <Footer />
