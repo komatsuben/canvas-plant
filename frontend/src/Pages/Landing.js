@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <>
       <ColorPalette>
-        <Stack sx={{ background: `rgba(44,107,112,1)` }}>
+        <Stack sx={{ bgcolor: "white.main" }}>
           <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
             <Stack direction="column" spacing={2}>
               <Stack>

@@ -8,7 +8,7 @@ import Wave from 'react-wavify';
 export default function Footer() {
     return (
         <ColorPalette>
-            <Stack sx={{ width: '100%', height: '10vh', bgcolor: '#2c6b70', marginBottom: "-1vh" }}>
+            <Stack sx={{ width: '100%', height: '10vh', bgcolor: 'white.main', marginBottom: "-1vh" }}>
                 <Wave
                     fill={'#1C4643'}
                     paused={false}
@@ -26,20 +26,20 @@ export default function Footer() {
                         <Typography id={'social'} variant="h4" color={"secondary"} textAlign={"center"}>OUR SOCIAL MEDIA</Typography>
                     </Stack>
                     <Stack className="col" direction={"row"} justifyContent={"center"} alignItems={"center"}>
-                        <Button 
+                        <Button
                             sx={{
-                                borderRadius: '50%', 
+                                borderRadius: '50%',
                                 height: '7vh',
                                 minWidth: 0,
                                 aspectRatio: 1,
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center'
-                            }} 
+                            }}
                             variant="contained" color={"secondary"}
                         >
                             <Link to={"https://www.instagram.com/canisiuscanvas"} target="_blank" style={{ color: 'white' }}>
-                                <InstagramIcon/>
+                                <InstagramIcon />
                             </Link>
                         </Button>
                     </Stack>
