@@ -10,14 +10,42 @@ import {
 import ColorPalette from "../Components/ColorPalette";
 
 const Landing = () => {
+  const color = [
+    "#e91d2d",
+    "#cb9a28",
+    "#2b9645",
+    "#bf2032",
+    "#ed412a",
+    "#00a8d3",
+    "#fbb614",
+    "#8e1838",
+    "#f16c24",
+    "#df1a82",
+    "#f79c25",
+    "#cb8b2a",
+    "#48773d",
+    "#0177b5",
+    "#40ad48",
+    "#005387",
+    "#1a3567",
+  ];
+
   return (
     <>
       <ColorPalette>
         <Stack sx={{ bgcolor: "white.main" }}>
-          <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
-            <Stack direction="column" spacing={2}>
+          <Stack
+            sx={{
+              height: "100vh",
+              background:
+                "url(https://placehold.jp/1920x1080.png) fixed no-repeat center",
+            }}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container fixed>
               <Stack>
-                <Typography variant={"h1"} color={"secondary"}>
+                <Typography variant={"h2"} color={"secondary"}>
                   Canisius Vanguard SDGS
                 </Typography>
               </Stack>
@@ -27,160 +55,24 @@ const Landing = () => {
                 justifyContent={"space-evenly"}
                 sx={{ opacity: 0.5 }}
               >
-                <Stack
-                  sx={{
-                    bgcolor: "#e91d2d",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  1
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#cb9a28",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  2
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#2b9645",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  3
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#bf2032",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  4
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#ed412a",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  5
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#00a8d3",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  6
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#fbb614",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  7
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#8e1838",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  8
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#f16c24",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  9
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#df1a82",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  10
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#f79c25",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  11
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#cb8b2a",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  12
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#48773d",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  13
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#0177b5",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  14
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#40ad48",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  15
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#005387",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  16
-                </Stack>
-                <Stack
-                  sx={{
-                    bgcolor: "#1a3567",
-                    width: "100%",
-                    color: "transparent",
-                  }}
-                >
-                  17
-                </Stack>
+                {color.map((color) => (
+                  <Stack
+                    sx={{
+                      bgcolor: color,
+                      width: "100%",
+                      color: "transparent",
+                    }}
+                    key={color.toString()}
+                  >
+                    Harun
+                  </Stack>
+                ))}
               </Stack>
+            </Container>
+          </Stack>
+
+          <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
+            <Stack direction="column" spacing={2}>
               <Stack>
                 <Box sx={{ bgcolor: "primary.main", padding: "2rem" }}>
                   <Typography variant={"h3"} color={"secondary"}>
