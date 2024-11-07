@@ -38,14 +38,18 @@ const Landing = () => {
             sx={{
               height: "100vh",
               background:
-                "url(https://placehold.jp/1920x1080.png) fixed no-repeat center",
+                "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
             }}
             alignContent={"center"}
             justifyContent={"center"}
           >
             <Container fixed>
               <Stack>
-                <Typography variant={"h2"} color={"secondary"}>
+                <Typography
+                  variant={"h1"}
+                  sx={{ fontSize: "3 rem" }}
+                  color={"secondary"}
+                >
                   Canisius Vanguard SDGS
                 </Typography>
               </Stack>
@@ -61,10 +65,11 @@ const Landing = () => {
                       bgcolor: color,
                       width: "100%",
                       color: "transparent",
+                      backgroundSize:"cover",
                     }}
                     key={color.toString()}
                   >
-                    Harun
+                    .
                   </Stack>
                 ))}
               </Stack>
