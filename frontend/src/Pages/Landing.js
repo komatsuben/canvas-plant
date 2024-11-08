@@ -47,7 +47,11 @@ const Landing = () => {
               <Stack>
                 <Typography
                   variant={"h1"}
-                  sx={{ fontSize: "3 rem" }}
+                  sx={{
+                    fontSize: "3 rem",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
                   color={"secondary"}
                 >
                   Canisius Vanguard SDGS
@@ -65,7 +69,7 @@ const Landing = () => {
                       bgcolor: color,
                       width: "100%",
                       color: "transparent",
-                      backgroundSize:"cover",
+                      backgroundSize: "cover",
                     }}
                     key={color.toString()}
                   >
