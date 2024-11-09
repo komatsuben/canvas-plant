@@ -47,8 +47,9 @@ const Landing = () => {
               <Stack justifyContent={"center"} direction={"row"}>
                 <Typography
                   variant={"h1"}
-                  fontSize={"5rem"}
+                  fontSize={{xs: "3rem", md: "5rem"}}
                   color={"secondary"}
+                  textAlign={"center"}
                 >
                   Canisius Vanguard SDGS
                 </Typography>
