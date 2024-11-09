@@ -49,7 +49,7 @@ class Transaction(models.Model):
     message = models.CharField(null=True, blank=True, max_length=255)
     type = models.CharField(null=False, default="TREE", choices=get_choices(TransactionType))
     is_success = models.BooleanField(null=False, default=False)
-    image = models.ImageField(null=False)
+    transaction_prove = models.ImageField(upload_to='transaction_proofs/', null=True, blank=True)
     
     def __str__(self):
         return f"Transaction {self.id} by {self.user.email}"
