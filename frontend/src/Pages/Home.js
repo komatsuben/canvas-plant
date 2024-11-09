@@ -36,7 +36,7 @@ const Landing = () => {
         <Stack sx={{ bgcolor: "white.main" }}>
           <Stack
             sx={{
-              height: {xs: "93vh", md: "100vh"},
+              height: "95vh",
               background:
                 "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
             }}
