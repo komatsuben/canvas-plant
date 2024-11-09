@@ -80,17 +80,17 @@ const Landing = () => {
             </Container>
           </Stack>
 
-          <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
+          <Container fixed sx={{ my: "2%" }}>
             <Stack direction="column" spacing={2}>
               <Stack>
-                <Box sx={{ bgcolor: "primary.main", padding: "2rem" }}>
+                <Box sx={{ bgcolor: "transparent", padding: "2rem" }}>
                   <Typography variant={"h3"} color={"secondary"}>
                     About
                   </Typography>
                   <Divider
                     sx={{ borderBottomColor: "secondary.main", my: "1rem" }}
                   />
-                  <Typography cariant={"p"} color={"secondary"}>
+                  <Typography cariant={"p"} color={"primary"}>
                     "On the other hand, we denounce with righteous indignation
                     and dislike men who are so beguiled and demoralized by the
                     charms of pleasure of the moment, so blinded by desire, that
@@ -114,6 +114,13 @@ const Landing = () => {
               </Stack>
             </Stack>
           </Container>
+          <Stack bgcolor={"red"}>
+            <Container fixed>
+              <Stack>
+                <Typography variant={"h3"} textAlign={"center"} my={5}>Promotions</Typography>
+              </Stack>
+            </Container>
+          </Stack>
         </Stack>
       </ColorPalette>
     </>
