@@ -8,6 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
+import CustomCarousel from "../Components/CustomCarousel";
 
 const Landing = () => {
   const color = [
@@ -114,10 +115,13 @@ const Landing = () => {
               </Stack>
             </Stack>
           </Container>
-          <Stack bgcolor={"red"}>
+          <Stack bgcolor={"primary.main"}>
             <Container fixed>
               <Stack>
-                <Typography variant={"h3"} textAlign={"center"} my={5}>Promotions</Typography>
+                <Typography variant={"h3"} textAlign={"center"} my={5} color={"secondary"}>Promotions</Typography>
+              </Stack>
+              <Stack>
+                <CustomCarousel />
               </Stack>
             </Container>
           </Stack>
