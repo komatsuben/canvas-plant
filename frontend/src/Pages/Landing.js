@@ -39,6 +39,8 @@ const Landing = () => {
               height: "100vh",
               background:
                 "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
+              backgroundSize: "contain",
+              resize:"both",
             }}
             alignContent={"center"}
             justifyContent={"center"}
