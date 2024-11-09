@@ -51,7 +51,7 @@ const Landing = () => {
                   color={"secondary"}
                   textAlign={"center"}
                 >
-                  Canisius Vanguard SDGS
+                  Canisius Vanguard SDGs
                 </Typography>
               </Stack>
               <Stack
