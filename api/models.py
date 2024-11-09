@@ -47,7 +47,7 @@ class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.IntegerField(null=False, default=0)
     message = models.CharField(null=True, blank=True, max_length=255)
-    type = models.CharField(null=False, default="TREE", choices=get_choices(TransactionType))
+    type = models.CharField(null=False, default="TREE", choices=get_choices(TransactionType), max_length=8)
     is_success = models.BooleanField(null=False, default=False)
     transaction_prove = models.ImageField(upload_to='transaction_proofs/', null=True, blank=True)
     

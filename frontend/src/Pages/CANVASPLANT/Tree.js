@@ -4,6 +4,9 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import CustomInput from "../../Components/CustomInput";
 import CustomInputNumber from "../../Components/CustomInputNumber";
 
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import ImageUpload from "../../Components/ImageUpload";
+
 export default function Tree(props) {
     const addThousandSeparator = (value) => {
         const parts = value.toString().split('.');
@@ -37,6 +40,7 @@ export default function Tree(props) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [image, setImage] = useState('')
 
     const handleNext = () => {
         fetch(`/api/user/?email=${email}`)
@@ -177,6 +181,9 @@ export default function Tree(props) {
                                 </Stack>
                             </Stack>
                             <Stack direction={"row"} flexWrap={"wrap"}>
+                                <Stack className="col">
+                                    <ImageUpload var={image} setVar={setImage} icon={CloudUploadIcon} />
+                                </Stack>
                                 <Stack className="col">
                                     <Button variant="contained" color={"primary"} onClick={()=>{handleNext()}}>
                                         Next
