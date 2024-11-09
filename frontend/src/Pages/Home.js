@@ -1,72 +1,119 @@
-import React, { useState, useEffect } from "react";
-import { Button, Container, Stack, Typography } from "@mui/material";
+import React from "react";
+import {
+  Button,
+  Container,
+  Stack,
+  Typography,
+  Box,
+  Divider,
+} from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
-import Banner from "./Banner";
-import Tree from "./Tree";
-import Donate from "./Donate";
-import Leaderboard from "./Leaderboard";
-import PlantingProjects from "./PlantingProjects";
-import PlantingProgress from "./Progress";
-import { HashLink as Link } from 'react-router-hash-link';
-import CustomToggle from "../Components/CustomToggle";
 
-export default function Home() {
-    const addThousandSeparator = (value) => {
-        const parts = value.toString().split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return parts.join('.');
-    };
+const Landing = () => {
+  const color = [
+    "#e91d2d",
+    "#cb9a28",
+    "#2b9645",
+    "#bf2032",
+    "#ed412a",
+    "#00a8d3",
+    "#fbb614",
+    "#8e1838",
+    "#f16c24",
+    "#df1a82",
+    "#f79c25",
+    "#cb8b2a",
+    "#48773d",
+    "#0177b5",
+    "#40ad48",
+    "#005387",
+    "#1a3567",
+  ];
 
-    const [total, setTotal] = useState(0);
-    const target = 1_000;
-    const [isTree, setIsTree] = useState(true);
+  return (
+    <>
+      <ColorPalette>
+        <Stack sx={{ bgcolor: "white.main" }}>
+          <Stack
+            sx={{
+              height: "100vh",
+              background:
+                "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
+            }}
+            alignContent={"center"}
+            justifyContent={"center"}
+          >
+            <Container fixed>
+              <Stack>
+                <Typography
+                  variant={"h1"}
+                  sx={{ fontSize: "3 rem" }}
+                  color={"secondary"}
+                >
+                  Canisius Vanguard SDGS
+                </Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                width="100%"
+                justifyContent={"space-evenly"}
+                sx={{ opacity: 0.5 }}
+              >
+                {color.map((color) => (
+                  <Stack
+                    sx={{
+                      bgcolor: color,
+                      width: "100%",
+                      color: "transparent",
+                      backgroundSize:"cover",
+                    }}
+                    key={color.toString()}
+                  >
+                    .
+                  </Stack>
+                ))}
+              </Stack>
+            </Container>
+          </Stack>
 
-    useEffect(()=>{
-        fetch('/api/donation')
-        .then(response => response.json())
-        .then(data => {
-            setTotal(data.total);
-        })
-    }, [])
-
-    return (
-        <ColorPalette>
-            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>
-                <Banner total={total}/>
-                <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
-                    <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
-                        <Stack></Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={"donate"} bgcolor={"forest.light"} borderRadius={'8px'} padding={"3% 2%"}>
-                            <Stack className="col">
-                                <Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>JOIN US</Typography>
-                                <Typography variant="p" color={"secondary"} textAlign={"center"} fontSize={{xs: "0.9rem", sm: "1rem"}}>
-                                    by sponsoring our event
-                                </Typography>
-                            </Stack>
-                            <Stack className="col" justifyContent={"center"} direction={"row"}>
-                                <CustomToggle var={isTree} setVar={setIsTree} values={[true, false]} labels={["TREE", "DONATE"]} exclusive color={"secondary"}/>
-                            </Stack>
-                            {isTree ? (<Tree current_tree={total} target={target}/>) : (<Donate/>)}
-                        </Stack>
-                        <Stack direction={"column"} flexWrap={'wrap'}>
-                            <Stack direction={'row'} justifyContent={'center'}>
-                                <Button variant="contained" sx={{borderRadius:'32px', fontSize:'1.5rem'}} 
-                                component={Link} smooth to={"/#planting-project"}><Typography color={"secondary"} textAlign={"center"} variant="h4" fontSize={{xs: "1.5rem", sm: "2.125rem"}}>Our Planting Project</Typography></Button>
-                            </Stack>
-                        </Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} id={'leaderboard'} bgcolor={"secondary.light"} borderRadius={'8px'} padding={"3% 2%"}>
-                            <Leaderboard/>
-                        </Stack>
-                        <Stack bgcolor={"#cecece"} borderRadius={'8px'} padding={"3% 2%"}>
-                            <PlantingProgress trees={total} total={target} />
-                        </Stack>
-                        <Stack gap={{xs: 1, sm: 2}} direction={"column"} flexWrap={"wrap"} bgcolor={"secondary.light"} style={{borderRadius: '8px'}} id={'planting-project'}>
-                            <PlantingProjects/>
-                        </Stack>
-                        <Stack></Stack>
-                    </Stack>
-                </Container>
+          <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
+            <Stack direction="column" spacing={2}>
+              <Stack>
+                <Box sx={{ bgcolor: "primary.main", padding: "2rem" }}>
+                  <Typography variant={"h3"} color={"secondary"}>
+                    About
+                  </Typography>
+                  <Divider
+                    sx={{ borderBottomColor: "secondary.main", my: "1rem" }}
+                  />
+                  <Typography cariant={"p"} color={"secondary"}>
+                    "On the other hand, we denounce with righteous indignation
+                    and dislike men who are so beguiled and demoralized by the
+                    charms of pleasure of the moment, so blinded by desire, that
+                    they cannot foresee the pain and trouble that are bound to
+                    ensue; and equal blame belongs to those who fail in their
+                    duty through weakness of will, which is the same as saying
+                    through shrinking from toil and pain. These cases are
+                    perfectly simple and easy to distinguish. In a free hour,
+                    when our power of choice is untrammelled and when nothing
+                    prevents our being able to do what we like best, every
+                    pleasure is to be welcomed and every pain avoided. But in
+                    certain circumstances and owing to the claims of duty or the
+                    obligations of business it will frequently occur that
+                    pleasures have to be repudiated and annoyances accepted. The
+                    wise man therefore always holds in these matters to this
+                    principle of selection: he rejects pleasures to secure other
+                    greater pleasures, or else he endures pains to avoid worse
+                    pains."
+                  </Typography>
+                </Box>
+              </Stack>
             </Stack>
-        </ColorPalette>
-    );
-}
+          </Container>
+        </Stack>
+      </ColorPalette>
+    </>
+  );
+};
+
+export default Landing;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import CustomInput from "../Components/CustomInput";
-import CustomInputNumber from "../Components/CustomInputNumber";
+import CustomInput from "../../Components/CustomInput";
+import CustomInputNumber from "../../Components/CustomInputNumber";
 
 export default function Donate() {
     const getCookie = (name) => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Container, Chip, Stack, Typography } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import ColorPalette from "../Components/ColorPalette";
-import CustomInput from "../Components/CustomInput";
-import CustomToggle from "../Components/CustomToggle";
-import DateTimeFormat from "../Components/DateTimeFormat";
+import ColorPalette from "../../Components/ColorPalette";
+import CustomInput from "../../Components/CustomInput";
+import CustomToggle from "../../Components/CustomToggle";
+import DateTimeFormat from "../../Components/DateTimeFormat";
 
 export default function SearchForm() {
     const addThousandSeparator = (value) => {
