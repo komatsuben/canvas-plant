@@ -7,4 +7,8 @@ node_modules
 migrations
 *.crt
 *.key
+
 .env
+.env.example
+.env.local
+.env.staging
