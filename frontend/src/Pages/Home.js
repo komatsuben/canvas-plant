@@ -39,21 +39,15 @@ const Landing = () => {
               height: "100vh",
               background:
                 "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
-              backgroundSize: "contain",
-              resize:"both",
             }}
             alignContent={"center"}
             justifyContent={"center"}
           >
             <Container fixed>
-              <Stack>
+              <Stack justifyContent={"center"} direction={"row"}>
                 <Typography
                   variant={"h1"}
-                  sx={{
-                    fontSize: "3 rem",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
+                  fontSize={"5rem"}
                   color={"secondary"}
                 >
                   Canisius Vanguard SDGS
@@ -64,9 +58,12 @@ const Landing = () => {
                 width="100%"
                 justifyContent={"space-evenly"}
                 sx={{ opacity: 0.5 }}
+                height="2vh"
               >
                 {color.map((color) => (
                   <Stack
+                  flexGrow={1}
+                  flexDirection={'row'}
                     sx={{
                       bgcolor: color,
                       width: "100%",
@@ -75,7 +72,7 @@ const Landing = () => {
                     }}
                     key={color.toString()}
                   >
-                    .
+                  
                   </Stack>
                 ))}
               </Stack>
