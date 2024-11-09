@@ -5,12 +5,12 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import ColorPalette from "../Components/ColorPalette";
 import Wave from 'react-wavify';
 
-export default function Footer() {
+export default function Footer(props) {
     return (
         <ColorPalette>
-            <Stack sx={{ width: '100%', height: '10vh', bgcolor: 'white.main', marginBottom: "-1vh" }}>
+            <Stack sx={{ width: '100%', height: '10vh', bgcolor: `${props.bgcolor}`, marginBottom: "-1vh" }}>
                 <Wave
-                    fill={'#1C4643'}
+                    fill={props.fillcolor}
                     paused={false}
                     options={{
                         amplitude: 20,
@@ -20,7 +20,7 @@ export default function Footer() {
                     style={{ width: '100%', height: '100%' }}
                 />
             </Stack>
-            <Stack width={'100%'} className="form" bgcolor={"primary.dark"} borderRadius={0}>
+            <Stack width={'100%'} className="form" bgcolor={props.fillcolor} borderRadius={0}>
                 <Stack direction={"column"} gap={1}>
                     <Stack className="col">
                         <Typography id={'social'} variant="h4" color={"secondary"} textAlign={"center"}>OUR SOCIAL MEDIA</Typography>

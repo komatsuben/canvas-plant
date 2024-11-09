@@ -10,7 +10,7 @@ import {
 import ColorPalette from "../Components/ColorPalette";
 import CustomCarousel from "../Components/CustomCarousel";
 
-const Landing = () => {
+const Home = () => {
   const color = [
     "#e91d2d",
     "#cb9a28",
@@ -131,4 +131,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Home;

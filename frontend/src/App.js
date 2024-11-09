@@ -25,7 +25,7 @@ export default class App extends Component {
                             <Route exact path="/plant/search" Component={SearchForm} />
                         </Routes>
                     </main>
-                    <Footer />
+                    <Footer fillcolor={"#1C4643"} bgcolor={"#fff"} />
                 </Router>
             </div>
         );

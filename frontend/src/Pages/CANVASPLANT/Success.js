@@ -77,7 +77,7 @@ export default function Success(props) {
                         </Stack>
                         <Stack direction={"row"} gap={1} flexWrap={"wrap"} justifyContent={"center"}>
                             <Stack className="col">
-                                <Button variant="contained" color={"primary"} onClick={()=>{navigate('/')}}>
+                                <Button variant="contained" color={"primary"} onClick={()=>{navigate('/plant')}}>
                                     OK
                                 </Button>
                             </Stack>
