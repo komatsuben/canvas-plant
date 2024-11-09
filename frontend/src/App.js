@@ -8,6 +8,8 @@ import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
 // CANVASPLANT
 import HomePlant from "./Pages/CANVASPLANT/HomePlant";
+import Success from "./Pages/CANVASPLANT/Success";
+import SearchForm from "./Pages/CANVASPLANT/Search";
 
 export default class App extends Component {
     render() {
