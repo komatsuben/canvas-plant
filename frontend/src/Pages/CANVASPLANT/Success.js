@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Container, Stack, Typography } from "@mui/material";
-import ColorPalette from "../Components/ColorPalette";
-import CustomToggle from "../Components/CustomToggle";
-import Popup from "../Components/Popup";
+import ColorPalette from "../../Components/ColorPalette";
+import CustomToggle from "../../Components/CustomToggle";
+import Popup from "../../Components/Popup";
 
 export default function Success(props) {
     const navigate = useNavigate();

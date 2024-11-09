@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Chip, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
-import CustomToggle from "../Components/CustomToggle";
-import DateTimeFormat from "../Components/DateTimeFormat";
+import CustomToggle from "../../Components/CustomToggle";
+import DateTimeFormat from "../../Components/DateTimeFormat";
 
 export default function Leaderboard() {
     const addThousandSeparator = (value) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Stack, Typography } from "@mui/material";
-import Popup from "../Components/Popup";
+import Popup from "../../Components/Popup";
 
 export default function PlantingProjects() {
     return (
