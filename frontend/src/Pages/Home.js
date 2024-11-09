@@ -36,7 +36,7 @@ const Landing = () => {
         <Stack sx={{ bgcolor: "white.main" }}>
           <Stack
             sx={{
-              height: "100vh",
+              height: {xs: "93vh", md: "100vh"},
               background:
                 "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
             }}
@@ -47,7 +47,7 @@ const Landing = () => {
               <Stack justifyContent={"center"} direction={"row"}>
                 <Typography
                   variant={"h1"}
-                  fontSize={{xs: "3rem", md: "5rem"}}
+                  fontSize={{ xs: "3rem", md: "5rem" }}
                   color={"secondary"}
                   textAlign={"center"}
                 >
@@ -63,8 +63,8 @@ const Landing = () => {
               >
                 {color.map((color) => (
                   <Stack
-                  flexGrow={1}
-                  flexDirection={'row'}
+                    flexGrow={1}
+                    flexDirection={'row'}
                     sx={{
                       bgcolor: color,
                       width: "100%",
@@ -73,7 +73,7 @@ const Landing = () => {
                     }}
                     key={color.toString()}
                   >
-                  
+
                   </Stack>
                 ))}
               </Stack>
