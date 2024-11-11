@@ -35,10 +35,11 @@ class TransactionSerializerPOST(serializers.ModelSerializer):
     user = UserNestedSerializer()
     amount = serializers.IntegerField()
     message = serializers.CharField(required=False, allow_blank=True)
+    transaction_prove = serializers.ImageField()
 
     class Meta:
         model = Transaction
-        fields = ["user", "amount", "message", "type"]
+        fields = ["user", "amount", "message", "type", "transaction_prove"]
 
     def validate_Amount(self, value):
         if value <= 0:

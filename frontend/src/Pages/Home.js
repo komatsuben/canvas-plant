@@ -8,8 +8,9 @@ import {
   Divider,
 } from "@mui/material";
 import ColorPalette from "../Components/ColorPalette";
+import CustomCarousel from "../Components/CustomCarousel";
 
-const Landing = () => {
+const Home = () => {
   const color = [
     "#e91d2d",
     "#cb9a28",
@@ -36,27 +37,22 @@ const Landing = () => {
         <Stack sx={{ bgcolor: "white.main" }}>
           <Stack
             sx={{
-              height: "100vh",
+              height: "95vh",
               background:
                 "url(https://placehold.jp/2560x1206.png) fixed no-repeat center",
-              backgroundSize: "contain",
-              resize:"both",
             }}
             alignContent={"center"}
             justifyContent={"center"}
           >
             <Container fixed>
-              <Stack>
+              <Stack justifyContent={"center"} direction={"row"}>
                 <Typography
                   variant={"h1"}
-                  sx={{
-                    fontSize: "3 rem",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
+                  fontSize={{ xs: "3rem", md: "5rem" }}
                   color={"secondary"}
+                  textAlign={"center"}
                 >
-                  Canisius Vanguard SDGS
+                  Canisius Vanguard SDGs
                 </Typography>
               </Stack>
               <Stack
@@ -64,9 +60,12 @@ const Landing = () => {
                 width="100%"
                 justifyContent={"space-evenly"}
                 sx={{ opacity: 0.5 }}
+                height="2vh"
               >
                 {color.map((color) => (
                   <Stack
+                    flexGrow={1}
+                    flexDirection={'row'}
                     sx={{
                       bgcolor: color,
                       width: "100%",
@@ -75,24 +74,24 @@ const Landing = () => {
                     }}
                     key={color.toString()}
                   >
-                    .
+
                   </Stack>
                 ))}
               </Stack>
             </Container>
           </Stack>
 
-          <Container fixed style={{ marginTop: "2%", marginBottom: "2%" }}>
+          <Container fixed sx={{ my: "2%" }}>
             <Stack direction="column" spacing={2}>
               <Stack>
-                <Box sx={{ bgcolor: "primary.main", padding: "2rem" }}>
+                <Box sx={{ bgcolor: "transparent", padding: "2rem" }}>
                   <Typography variant={"h3"} color={"secondary"}>
                     About
                   </Typography>
                   <Divider
                     sx={{ borderBottomColor: "secondary.main", my: "1rem" }}
                   />
-                  <Typography cariant={"p"} color={"secondary"}>
+                  <Typography cariant={"p"} color={"primary"}>
                     "On the other hand, we denounce with righteous indignation
                     and dislike men who are so beguiled and demoralized by the
                     charms of pleasure of the moment, so blinded by desire, that
@@ -116,10 +115,20 @@ const Landing = () => {
               </Stack>
             </Stack>
           </Container>
+          <Stack bgcolor={"primary.main"}>
+            <Container fixed>
+              <Stack>
+                <Typography variant={"h3"} textAlign={"center"} my={5} color={"secondary"}>Promotions</Typography>
+              </Stack>
+              <Stack>
+                <CustomCarousel />
+              </Stack>
+            </Container>
+          </Stack>
         </Stack>
       </ColorPalette>
     </>
   );
 };
 
-export default Landing;
+export default Home;

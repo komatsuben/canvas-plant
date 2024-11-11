@@ -13,8 +13,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import environ
+
+# Heroku
 import django_heroku
 import dj_database_url
+
+# Cloudinary
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+# from cloudinary_storage.storage import MediaCloudinaryStorage
 
 env = environ.Env()
 environ.Env.read_env()
@@ -47,6 +55,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'frontend.apps.FrontendConfig',
     'phonenumber_field',
+    'cloudinary',
+    'cloudinary_storage',
     'django_extensions',
 ]
 
@@ -97,6 +107,23 @@ DATABASES = {
     }
 }
 
+DATABASE_URL = env('DATABASE_URL', default=None)
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+
+# Configure Cloudinary
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
+#     'API_KEY': env('CLOUDINARY_API_KEY'),
+#     'API_SECRET': env('CLOUDINARY_API_SECRET'),
+# }
+
+# DEFAULT_FILE_STORAGE = MediaCloudinaryStorage
+
+# Media files configuration for local storage
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -146,21 +173,3 @@ PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'ID'
 
 django_heroku.settings(locals())
-
-# Heroku Setup
-
-# 1. Login to Heroku
-# heroku login
-
-# 2. Create a new Git repository
-# cd <my-project>
-# git init
-# heroku git:remote -a canisius-vanguard-sdg
-
-# 3. Deploy your application
-# git add .
-# git commit -am "make it better"
-# git push heroku main
-
-# For existing Git repository
-# heroku git:remote -a canisius-vanguard-sdg

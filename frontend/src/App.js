@@ -8,6 +8,8 @@ import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
 // CANVASPLANT
 import HomePlant from "./Pages/CANVASPLANT/HomePlant";
+import Success from "./Pages/CANVASPLANT/Success";
+import SearchForm from "./Pages/CANVASPLANT/Search";
 
 export default class App extends Component {
     render() {
@@ -23,7 +25,7 @@ export default class App extends Component {
                             <Route exact path="/plant/search" Component={SearchForm} />
                         </Routes>
                     </main>
-                    <Footer />
+                    <Footer fillcolor={"#1C4643"} bgcolor={"#fff"} />
                 </Router>
             </div>
         );

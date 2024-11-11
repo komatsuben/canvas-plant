@@ -10,7 +10,7 @@ import PlantingProgress from "./Progress";
 import { HashLink as Link } from 'react-router-hash-link';
 import CustomToggle from "../../Components/CustomToggle";
 
-export default function Home() {
+export default function HomePlant() {
     const addThousandSeparator = (value) => {
         const parts = value.toString().split('.');
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -31,7 +31,7 @@ export default function Home() {
 
     return (
         <ColorPalette>
-            <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>
+            <Stack bgcolor={'forest.main'}>
                 <Banner total={total}/>
                 <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
                     <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
@@ -48,6 +48,13 @@ export default function Home() {
                             </Stack>
                             {isTree ? (<Tree current_tree={total} target={target}/>) : (<Donate/>)}
                         </Stack>
+                        <Stack></Stack>
+                    </Stack>
+                </Container>
+            </Stack>
+            <Stack bgcolor={'white.main'}>
+                <Container fixed style={{marginTop: "2%", marginBottom: "2%"}}>
+                    <Stack gap={{xs: 5, sm: 10}} display={"flex"}>
                         <Stack direction={"column"} flexWrap={'wrap'}>
                             <Stack direction={'row'} justifyContent={'center'}>
                                 <Button variant="contained" sx={{borderRadius:'32px', fontSize:'1.5rem'}} 
