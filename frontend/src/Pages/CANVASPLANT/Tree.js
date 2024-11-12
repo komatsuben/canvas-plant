@@ -132,19 +132,15 @@ export default function Tree(props) {
         });
     };
 
-    useEffect(()=>{
-        setPrice(addThousandSeparator(price));
-    }, [price]);
-
     return (
         <>
             <Popup title={"QRIS"} trigger={popup} setTrigger={setPopup}>
                 <Stack direction={"column"} justifyContent={"center"} alignItems={"center"} gap={2}>
+                    <Stack>
+                        <Typography variant="h3">Amount: Rp {addThousandSeparator(tree*parseInt(price)+0.64)}</Typography>
+                    </Stack>
                     <Stack className="col">
                         <img src="/static/images/qris.jpg"/>
-                    </Stack>
-                    <Stack>
-                        <Typography variant="h2">Amount: {addThousandSeparator(tree*price+0.64)}</Typography>
                     </Stack>
                 </Stack>
             </Popup>
@@ -189,7 +185,7 @@ export default function Tree(props) {
                                         <Typography variant="h5" color={"primary"} textAlign={"center"}>JOIN #CANVASPLANT</Typography>
                                     </Stack>
                                     <Stack className="col">
-                                        <Typography variant="p" color={"primary"} textAlign={"center"}>IDR {price} / tree</Typography>
+                                        <Typography variant="p" color={"primary"} textAlign={"center"}>IDR {addThousandSeparator(price)} / tree</Typography>
                                     </Stack>
                                 </Stack>
                                 <Stack className="col" direction={"column"} gap={1} width={'100%'}>
@@ -224,10 +220,17 @@ export default function Tree(props) {
                                         <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>
                                     </Stack>
                                 </Stack>
-                                <Stack direction={"row"} flexWrap={"wrap"} gap={2}>
+                                <Stack direction={"row"} flexWrap={"wrap"} gap={1}>
                                     <Stack className="col">
                                         <ImageUpload var={image} setVar={setImage} icon={CloudUploadIcon} />
                                     </Stack>
+                                    <Stack className="col">
+                                        <Button variant="contained" color={"primary"} onClick={()=>{setPopup(true)}}>
+                                            QRIS
+                                        </Button>
+                                    </Stack>
+                                </Stack>
+                                <Stack direction={"row"} flexWrap={"wrap"} gap={2}>
                                     <Stack className="col">
                                         <Button variant="contained" color={"primary"} onClick={()=>{handleNext()}}>
                                             Next

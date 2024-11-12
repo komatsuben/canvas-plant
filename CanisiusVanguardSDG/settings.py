@@ -18,12 +18,6 @@ import environ
 import django_heroku
 import dj_database_url
 
-# Cloudinary
-# import cloudinary
-# import cloudinary.uploader
-# import cloudinary.api
-# from cloudinary_storage.storage import MediaCloudinaryStorage
-
 env = environ.Env()
 environ.Env.read_env()
 
@@ -112,13 +106,13 @@ if DATABASE_URL:
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
 
 # Configure Cloudinary
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
-#     'API_KEY': env('CLOUDINARY_API_KEY'),
-#     'API_SECRET': env('CLOUDINARY_API_SECRET'),
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET'),
+}
 
-# DEFAULT_FILE_STORAGE = MediaCloudinaryStorage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Media files configuration for local storage
 MEDIA_URL = '/media/'
