@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views import index
 
 urlpatterns = [
@@ -6,4 +6,7 @@ urlpatterns = [
     path('plant', index, name='main'),
     path('plant/success/', index, name='success'),
     path('plant/search', index, name='search'),
+
+    # Catch-all route for React Router
+    re_path(r'^plant/.*$', index, name='plant-catchall'),
 ]

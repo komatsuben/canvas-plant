@@ -10,6 +10,8 @@ import Footer from "./Components/Footer";
 import HomePlant from "./Pages/CANVASPLANT/HomePlant";
 import Success from "./Pages/CANVASPLANT/Success";
 import SearchForm from "./Pages/CANVASPLANT/Search";
+import Donate from "./Pages/CANVASPLANT/Donate";
+import Leaderboard from "./Pages/CANVASPLANT/Leaderboard";
 
 export default class App extends Component {
     render() {
@@ -19,10 +21,12 @@ export default class App extends Component {
                     <Navbar />
                     <main>
                         <Routes>
-                            <Route exact path="/" Component={Home} />
-                            <Route exact path="/plant" Component={HomePlant} />
-                            <Route exact path="/plant/success" Component={Success} />
-                            <Route exact path="/plant/search" Component={SearchForm} />
+                            <Route path="/" element={<Home />} />
+                            <Route path="/plant/home" element={<HomePlant />} />
+                            <Route path="/plant/success" element={<Success />} />
+                            <Route path="/plant/search" element={<SearchForm />} />
+                            <Route path="/plant/donate" element={<Donate />} />
+                            <Route path="/plant/leaderboard" element={<Leaderboard />} />
                         </Routes>
                     </main>
                     <Footer fillcolor={"#1C4643"} bgcolor={"#fff"} />
