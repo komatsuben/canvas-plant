@@ -1,1 +1,1 @@
-web: gunicorn CanisiusVanguardSDG.wsgi:application --log-file -
+web: gunicorn canvas-plant.wsgi:application --log-file -
