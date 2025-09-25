@@ -21,10 +21,6 @@ export default class App extends Component {
                     <main>
                         <Routes>
                             <Route path="/" element={<HomePlant />} />
-                            <Route path="/plant/success" element={<Success />} />
-                            <Route path="/plant/search" element={<SearchForm />} />
-                            <Route path="/plant/donate" element={<Donate />} />
-                            <Route path="/plant/leaderboard" element={<Leaderboard />} />
                         </Routes>
                     </main>
                     <Footer fillcolor={"#1C4643"} bgcolor={"#fff"} />
