@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CustomInput from "../../Components/CustomInput";
 import CustomInputNumber from "../../Components/CustomInputNumber";
-
 import Popup from "../../Components/Popup";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ImageUpload from "../../Components/ImageUpload";
+import axios from "axios";
 
 export default function Tree(props) {
     const addThousandSeparator = (value) => {
@@ -27,7 +27,6 @@ export default function Tree(props) {
                 }
             }
         }
-    
         return cookieValue;
     }
     const csrftoken = getCookie('csrftoken');
@@ -43,103 +42,121 @@ export default function Tree(props) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(image);
-    }, [image])
+    }, [image]);
 
-    const handleNext = () => {
-        fetch(`/api/user/?email=${email}`)
-        .then(response => response.json())
-        .then(data => {
-            if (!data.error) {
-                setName(data.name);
-                setPhone(data.phone);
-            } else {
-                setName('');
-                setPhone('');
-            }
-        })
-        .catch(error => {
-            alert(error);
-        });
-        // if (props.current_tree + parseInt(String(tree).replace(',', '')) <= props.target) {
-        //     setNext(true);
-        // } else {
-        //     alert("Targeted tree limit exceed");
-        // }
-        setNext(true);
-    }
-
-    const handleForm = (event) => {
-        event.preventDefault();
-        // const data = {
-        //     user: {
-        //         email: email,
-        //         name: name,
-        //         phone: phone
-        //     },
-        //     amount: parseInt(String(tree).replaceAll(',', '')),
-        //     message: message,
-        //     image: image,
-        //     type: "TREE"
-        // };
-
-        const formData = new FormData();
+    const handleNext = async () => {
+        if (!email) {
+            alert("Please enter your email first.");
+            return;
+        }
         
-        formData.append('user.email', email);
-        formData.append('user.name', name);
-        formData.append('user.phone', phone);
-
-        formData.append('amount', parseInt(String(tree).replaceAll(',', '')));
-        formData.append('message', message || '');
-        if (image instanceof File) {
-            formData.append('transaction_prove', image);
-        } else {
-            console.error("Image is not a valid file:", image);
+        if (!phone) {
+            alert("Please enter your phone number first.");
+            return;
         }
-        formData.append('type', "TREE");
-
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
+    
+        try {
+            const response = await axios.get(`/api/user/`, {
+                params: {
+                    email: email,
+                    name: name || "",
+                    phone: phone || ""
+                }
+            });
+    
+            const data = response.data;
+    
+            setEmail(data.email || email);
+            setName(data.name || name);
+            if (data.phone) setPhone(data.phone);
+            
+            setNext(true);
+    
+        } catch (error) {
+            console.error(error.response || error);
+            console.error("POST error:", error.response?.data || error);
+            alert("Something went wrong: " + JSON.stringify(error.response?.data || error.message, null, 2));
         }
-
-        fetch('/api/transaction/post', {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': csrftoken
-            },
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Server returned an error response");
-            }
-        })
-        .then(data => {
-            if (data.status === "Accepted") {
-                alert('saved');
-                navigate('/');
-            } else {
-                alert(JSON.stringify(data.error));
-            }
-        })
-        .catch(error => {
-            alert(error);
-        });
     };
+    
+    const handleForm = async (event) => {
+        event.preventDefault();
+        
+        // 1️⃣ Validate tree selection
+        if (!tree || tree <= 0) {
+            alert("Please select a tree amount.");
+            return;
+        }
+        
+        // 2️⃣ Validate image upload
+        if (!image || !(image instanceof File)) {
+            alert("Please upload transaction proof.");
+            return;
+        }
+        
+        // 3️⃣ Prepare FormData with user data as JSON string
+        const formData = new FormData();
+        const normalizedPhone = phone.replace(/\D/g, ''); // remove all non-digits
+        const formattedPhone = '+' + normalizedPhone; 
+        
+        // Create user object and stringify it
+        const userObj = {
+            email: email,
+            name: name,
+            phone: formattedPhone
+        };
+        
+        // Append user data as JSON string
+        formData.append("user", JSON.stringify(userObj));
+        formData.append("amount", parseInt(String(tree).replaceAll(",", "")));
+        formData.append("message", message || "");
+        formData.append("transaction_prove", image);
+        formData.append("type", "TREE");
+        
+        // Log FormData for debugging
+        console.log("Submitting form with data:");
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+        
+        try {
+            const response = await axios.post("/api/transaction/post", formData, {
+                headers: {
+                    "X-CSRFToken": csrftoken,
+                    // Let browser set Content-Type for FormData with boundary
+                },
+            });
+            
+            const data = response.data;
+            
+            if (data.status === "Accepted") {
+                alert("Transaction saved successfully!");
+                navigate("/");
+            } else {
+                console.error("Rejected data:", data.error);
+                alert("Transaction rejected: " + JSON.stringify(data.error));
+            }
+        } catch (error) {
+            console.error("POST error:", error.response?.data || error);
+            alert("Something went wrong: " + JSON.stringify(error.response?.data, null, 2));
 
+        }
+    };
+    
     return (
         <>
             <Popup title={"QRIS"} trigger={popup} setTrigger={setPopup}>
                 <Stack direction={"column"} justifyContent={"center"} alignItems={"center"} gap={2}>
                     <Stack>
+                        {/* TODO: make sure to check the special code in amount. is it still 0.64? */}
                         <Typography variant="h3">Amount: Rp {addThousandSeparator(tree*parseInt(price)+0.64)}</Typography>
                     </Stack>
                     <Stack className="col">
+                        {/* TODO: revise the qris image here if it changes for this year */}
                         <img src="/static/images/qris.jpg"/>
                     </Stack>
                 </Stack>
@@ -156,9 +173,6 @@ export default function Tree(props) {
                                     <Stack direction={"column"} gap={2}>
                                         <Stack className="col">
                                             <CustomInput name="name" label="Display Name" type={"text"} helperText={"Gunakan nama lengkap Anda (Please use your fullname)"} var={name} setVar={setName} fullWidth color={"primary"}/>
-                                        </Stack>
-                                        <Stack className="col">
-                                            <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"}/>
                                         </Stack>
                                         <Stack className="col">
                                             <CustomInput name="message" label="Message" var={message} setVar={setMessage} multiline rows={3} fullWidth/>
@@ -217,7 +231,10 @@ export default function Tree(props) {
                                         <CustomInputNumber name="tree" label="Other Amount" var={tree} setVar={setTree} fullWidth color={"primary"} unit={"tree"}/>
                                     </Stack>
                                     <Stack className="col">
-                                        <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"}/>
+                                        <CustomInput name="email" label="Email Address" type={"email"} var={email} setVar={setEmail} fullWidth color={"primary"} required/>
+                                    </Stack>
+                                    <Stack className="col">
+                                        <CustomInput name="phone" label="Phone Number" type={"tel"} var={phone} setVar={setPhone} fullWidth color={"primary"} required/>
                                     </Stack>
                                 </Stack>
                                 <Stack direction={"row"} flexWrap={"wrap"} gap={1}>

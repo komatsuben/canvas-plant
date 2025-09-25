@@ -9,6 +9,7 @@ import PlantingProjects from "./PlantingProjects";
 import PlantingProgress from "./Progress";
 import { HashLink as Link } from 'react-router-hash-link';
 import CustomToggle from "../../Components/CustomToggle";
+import axios from "axios";
 
 export default function HomePlant() {
     const addThousandSeparator = (value) => {
@@ -21,13 +22,15 @@ export default function HomePlant() {
     const target = 1_000;
     const [isTree, setIsTree] = useState(true);
 
-    useEffect(()=>{
-        fetch('/api/donation')
-        .then(response => response.json())
-        .then(data => {
-            setTotal(data.total);
-        })
-    }, [])
+    useEffect(() => {
+        axios.get('/api/donation')
+            .then((response) => {
+                setTotal(response.data.total);
+            })
+            .catch((error) => {
+                console.error("Error fetching donation total:", error);
+            });
+    }, []);
 
     return (
         <ColorPalette>

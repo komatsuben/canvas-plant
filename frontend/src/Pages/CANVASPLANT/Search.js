@@ -5,6 +5,7 @@ import ColorPalette from "../../Components/ColorPalette";
 import CustomInput from "../../Components/CustomInput";
 import CustomToggle from "../../Components/CustomToggle";
 import DateTimeFormat from "../../Components/DateTimeFormat";
+import axios from "axios";
 
 export default function SearchForm() {
     const addThousandSeparator = (value) => {
@@ -25,7 +26,6 @@ export default function SearchForm() {
                 }
             }
         }
-    
         return cookieValue;
     }
     const csrftoken = getCookie('csrftoken');
@@ -40,24 +40,20 @@ export default function SearchForm() {
             field: field
         };
 
-        fetch('/api/search/', {
-            method: 'POST',
+        axios.post('/api/search/', filter, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
-            },
-            body: JSON.stringify(filter),
+            }
         })
-        .then(response => response.json())
-        .then(data => {
-            setResults(data);
+        .then((response) => {
+            setResults(response.data);
         })
-        .catch(error => {
+        .catch((error) => {
             console.error("Error fetching data:", error);
             setResults([]);
         });
     }, [keyword, field]);
-
     return (
         <ColorPalette>
             <Stack sx={{background: `linear-gradient(0deg, rgba(44,107,112,1) 0%, rgba(5,51,49,1) 60%);`}}>

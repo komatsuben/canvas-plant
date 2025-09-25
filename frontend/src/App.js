@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // MAIN
 import Navbar from "./Components/Navbar";
-import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
 // CANVASPLANT
 import HomePlant from "./Pages/CANVASPLANT/HomePlant";
@@ -21,8 +20,7 @@ export default class App extends Component {
                     <Navbar />
                     <main>
                         <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/plant/home" element={<HomePlant />} />
+                            <Route path="/" element={<HomePlant />} />
                             <Route path="/plant/success" element={<Success />} />
                             <Route path="/plant/search" element={<SearchForm />} />
                             <Route path="/plant/donate" element={<Donate />} />

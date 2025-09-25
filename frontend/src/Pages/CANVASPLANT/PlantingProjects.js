@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Stack, Typography } from "@mui/material";
-import Popup from "../../Components/Popup";
 
 export default function PlantingProjects() {
     return (
         <>
-            <Popup title={"PAYMENT METHOD"}>
-            </Popup>
             <Stack gap={3} direction={"column"} flexWrap={"wrap"} padding={'3%'}>
                 <Stack className="col">
                     <Typography 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import CustomToggle from "../../Components/CustomToggle";
 import DateTimeFormat from "../../Components/DateTimeFormat";
+import axios from "axios";
 
 export default function Leaderboard() {
     const addThousandSeparator = (value) => {
@@ -16,19 +17,21 @@ export default function Leaderboard() {
     const [mostRecent, setMostRecent] = useState([]);
     const [mostTree, setMostTree] = useState([]);
 
-    useEffect(()=>{
-        fetch('/api/leaderboard/recent')
-        .then(response => response.json())
-        .then(data => {
-            setMostRecent(data);
-        })
-
-        fetch('/api/leaderboard/tree')
-        .then(response => response.json())
-        .then(data => {
-            setMostTree(data);
-        })
-    }, [])
+    useEffect(() => {
+        const fetchLeaderboard = async () => {
+            try {
+                const [recentRes, treeRes] = await Promise.all([
+                    axios.get('/api/leaderboard/recent'),
+                    axios.get('/api/leaderboard/tree')
+                ]);
+                setMostRecent(recentRes.data);
+                setMostTree(treeRes.data);
+            } catch (error) {
+                console.error("Error fetching leaderboard:", error);
+            }
+        };
+        fetchLeaderboard();
+    }, []);
 
     return (
         <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
