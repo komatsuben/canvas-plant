@@ -9,7 +9,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = User
-        fields = ["email", "name", "phone", "tree", "donation"]
+        # fields = ["email", "name", "phone", "tree", "donation"]
+        fields = "__all__"
 
 class UserNestedSerializer(serializers.ModelSerializer):
     # Remove unique validator so DRF won't block existing users

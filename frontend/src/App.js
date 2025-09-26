@@ -21,6 +21,7 @@ export default class App extends Component {
                     <main>
                         <Routes>
                             <Route path="/" element={<HomePlant />} />
+                            <Route path="/search" element={<SearchForm />} />
                         </Routes>
                     </main>
                     <Footer fillcolor={"#1C4643"} bgcolor={"#fff"} />
