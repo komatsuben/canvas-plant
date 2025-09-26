@@ -89,22 +89,23 @@ WSGI_APPLICATION = 'CanisiusVanguardSDG.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-        'ATOMIC_REQUESTS': True,
-    }
+    'default': dj_database_url.config(
+        default=env("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=False  # works locally
+    )
 }
 
-DATABASE_URL = env('DATABASE_URL', default=None)
-if DATABASE_URL:
-    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
-
+# If running on Heroku, force SSL
+if "DYNO" in os.environ:  # Heroku dyno env var
+    DATABASES['default'] = dj_database_url.config(
+        default=env("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
+    
 # Configure Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
