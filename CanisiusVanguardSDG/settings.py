@@ -90,23 +90,23 @@ WSGI_APPLICATION = 'CanisiusVanguardSDG.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Local (manual config)
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
-    }
-}
 
-# If running on Heroku (DATABASE_URL is provided)
-if "DATABASE_URL" in os.environ:
-    DATABASES["default"] = dj_database_url.config(
-        conn_max_age=600,
-        ssl_require=True
-    )
+if "DATABASE_URL" in os.environ:  # Heroku sets this automatically
+    DATABASES = {
+        "default": dj_database_url.config(conn_max_age=600, ssl_require=True)
+    }
+else:  # Local development (no SSL headaches)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "canvas-plant",
+            "USER": "postgres",
+            "PASSWORD": "Fibergy8",
+            "HOST": "localhost",
+            "PORT": "5432",
+        }
+    }
+
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
